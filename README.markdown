@@ -8,7 +8,7 @@ Matt Banks ( [@mattbanks](http://twitter.com/mattbanks) / [kernelcreativemedia.c
 
 ## Summary
 
-WordPress Starter Theme for use as a starting template for building custom themes. Uses HTML5 Boilerplate with Modernizr and Normalize.css. Tested with WordPress 3.2, 3.3 RC2. Rename folder to your theme name and being development.
+WordPress Starter Theme for use as a starting template for building custom themes. Uses HTML5 Boilerplate with Modernizr and Normalize.css. Tested with WordPress 3.2, 3.3 RC2. Rename folder to your theme name and begin development.
 
 ### Features
 
