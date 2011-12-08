@@ -16,12 +16,12 @@ WordPress Starter Theme for use as a starting template for building custom theme
 6. Much much more
 
 ### Suggested Plugins
-[WordPress SEO by Yoast](http://wordpress.org/extend/plugins/wordpress-seo/)
-[Google Analytics for WordPress by Yoast](http://wordpress.org/extend/plugins/google-analytics-for-wordpress/)
-[W3 Total Cache](http://wordpress.org/extend/plugins/w3-total-cache/)
+* [WordPress SEO by Yoast](http://wordpress.org/extend/plugins/wordpress-seo/)
+* [Google Analytics for WordPress by Yoast](http://wordpress.org/extend/plugins/google-analytics-for-wordpress/)
+* [W3 Total Cache](http://wordpress.org/extend/plugins/w3-total-cache/)
 
 ### Changelog
-#####1.0
+#### Version 1.0
 * initial version
 
 ### Credits
