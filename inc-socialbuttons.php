@@ -13,7 +13,8 @@
 	<ul class="clearfix">
 		<li class="share-twitter">
 			<div class="twitter_button">
-				<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 			</div><!-- .twitter_button -->
 		</li>
 		<li class="share-facebook">
