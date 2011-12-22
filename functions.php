@@ -11,6 +11,14 @@
 	// Add Post Formats Theme Support
 	add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video'));
 	
+	
+	// Remove default link for images
+	$image_set = get_option( 'image_default_link_type' );
+    if (!$image_set == 'none') {
+        update_option('image_default_link_type', 'none');
+    }
+	
+	
 	// Remove Read More Jump
 	function remove_more_jump_link($link) { 
 		$offset = strpos($link, '#more-');
@@ -23,7 +31,7 @@
 		return $link;
 	}
 	add_filter('the_content_more_link', 'remove_more_jump_link');
-	
+
 	
 	// Fix rel="category tag" validation error (remove when fixed in WordPress Core)
 	add_filter( 'the_category', 'add_nofollow_cat' ); 
