@@ -1,0 +1,50 @@
+/* POSTS */
+
+article { clear: both; margin: 0 0 35px 0; }
+
+blockquote { background: url(img/icons/blockquote.png) no-repeat 0 12px; padding: 10px 20px 10px 50px; font-style: italic; }
+blockquote p { }
+
+ul, ol { }
+
+.post { }
+
+.entry { }
+.entry a { }
+.entry a:hover { }
+
+.entry img { }
+
+.entry .wp-caption { }
+.entry .wp-caption img { }
+.entry .wp-caption .wp-caption-text { }
+.entry .wp-caption.aligncenter { margin: 0 auto; }
+
+img.wp-smiley { padding: 0; border: none; }
+
+.alignleft { float: left; width: auto; margin: 5px 15px 15px 0; }
+.alignright { float: right; width: auto; margin: 5px 0 15px 15px; }
+.aligncenter { text-align: center; margin-bottom: 5px;}
+img.aligncenter { margin-left: auto; margin-right: auto; display: block; }
+
+pre { }
+code, tt { }
+
+.meta { }
+.postmetadata { }
+
+/* SHARING */
+
+.sharing h4 { margin-bottom: 0; padding-bottom: 0; }
+.sharing ul { list-style: none; margin-top: 0; padding-top: 5px; margin-bottom: 0; padding-bottom: 0; }
+.sharing li { float: left; width: 120px; padding-left: 20px; }
+.sharing li:first-child { padding-left: 0; }
+.sharing .share-twitter { padding-top: 2px; }
+.sharing .share-facebook { padding-top: 2px; }
+.sharing .share-googleplus { padding-top: 2px; }
+
+/* POST NAVIGATION */
+
+.navgation { clear: both; }
+.next-posts { float: left; }
+.prev-posts { float: right; }

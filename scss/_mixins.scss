@@ -1,0 +1,331 @@
+/*
+ * Mixin for clearfix
+*/
+@mixin clearfix {
+	&:before, &:after { content: ""; display: table; }
+	&:after { clear: both; }
+	*zoom: 1;
+}
+
+/*
+ * Mixin for placeholder styling
+*/
+@mixin placeHolder($color) {
+	&::-webkit-input-placeholder { color:$color; }
+	&:-moz-placeholder { color:$color; }
+}
+
+/*
+ * Mixin for basic CSS triangles
+*/
+@mixin triangle($direction:up, $color:#000, $size:100px) {
+	@if($direction == up) {
+		border-color: transparent transparent $color;
+		border-style: solid;
+		border-width: 0 $size $size;
+		height: 0;
+		width: 0;
+	}
+	@if($direction == down) {
+		border-color: $color transparent transparent transparent;
+		border-style: solid;
+		border-width: $size;
+		height:0;
+		width:0;
+	}
+	@if($direction == left) {
+		border-color: transparent $color transparent transparent;
+		border-style: solid;
+		border-width: $size $size $size 0;
+		height: 0;
+		width: 0;
+	}
+	@if($direction == right) {
+		border-color: transparent transparent transparent $color;
+		border-style: solid;
+		border-width: $size 0 $size $size;
+		height:0;
+		width:0;
+	}
+}
+
+/*
+ * Mixin for selection markup
+*/
+@mixin selection($background, $color, $element:false) {
+	@if($element) {
+		&::-moz-selection{ background:$background; color:$color; text-shadow:none; }
+		&::selection { background:$background; color:$color; text-shadow:none; }
+	} @else {
+		::-moz-selection{ background:$background; color:$color; text-shadow:none; }
+		::selection { background:$background; color:$color; text-shadow:none; }
+	}
+}
+
+/*
+ * Apply a CSS3 box-shadow
+ * @include boxShadow(5px, 5px, 10px, #000);
+ */
+@mixin boxShadow($x: 5px, $y: 5px, $blur: 10px, $spread: 10px, $color: #000) {	
+	-webkit-box-shadow: $x $y $blur $spread $color;
+			box-shadow: $x $y $blur $spread $color;
+}
+
+/*
+ * Apply an inset CSS3 box-shadow
+ * @include insetBoxShadow(5px, 5px, 10px, #000);
+ */
+@mixin insetBoxShadow($x: 5px, $y: 5px, $blur: 10px, $spread: 10px, $color: #000) {
+	-webkit-box-shadow: inset $x $y $blur $spread $color;
+		box-shadow: inset $x $y $blur $spread $color;
+}
+
+/*
+ * Apply a CSS3 border radius
+ * @include borderRadius(4px);
+ */
+@mixin borderRadius($radius: 4px) {
+	-webkit-border-radius: $radius;
+	        border-radius: $radius;
+	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+
+/*
+ * Apply a CSS3 border radius to the top corners only
+ * @include borderTopRadius(4px);
+ */
+@mixin borderTopRadius($radius: 4px) {
+	-webkit-border-top-right-radius: $radius;
+	-webkit-border-top-left-radius: $radius;
+	border-top-right-radius: $radius;
+	border-top-left-radius: $radius;
+}
+
+/*
+ * Apply a CSS3 border radius to the right corners only
+ * @include borderRightRadius(4px);
+ */
+@mixin borderRightRadius($radius: 4px) {
+	-webkit-border-top-right-radius: $radius;
+	-webkit-border-bottom-right-radius: $radius;
+	border-top-right-radius: $radius;
+	border-bottom-right-radius: $radius;
+}
+
+/*
+ * Apply a CSS3 border radius to the bottom corners only
+ * @include borderBottomRadius(4px);
+ */
+@mixin borderBottomRadius($radius: 4px) {
+	-webkit-border-bottom-right-radius: $radius;
+	-webkit-border-bottom-left-radius: $radius;
+	border-bottom-right-radius: $radius;
+	border-bottom-left-radius: $radius;
+}
+
+/*
+ * Apply a CSS3 border radius to the left corners only
+ * @include borderLeftRadius(4px);
+ */
+@mixin borderLeftRadius($radius: 4px) {
+	-webkit-border-top-left-radius: $radius;
+	-webkit-border-bottom-left-radius: $radius;
+	border-top-left-radius: $radius;
+	border-bottom-left-radius: $radius;
+}
+
+/*
+ * Apply a CSS3 linear gradient
+ *
+ * $from - The original colour stop of the gradient, eg #FF0000 or #FF0000 20%
+ * $to - The final colour stop of the gradient
+ * $fallback - A fallback background-color; if none is provided, the $from colour is used
+ * $start - The starting point of the gradient
+ *
+ * @include linearGradient(red, green);
+ * @include linearGradient(red, green, transparent);
+ * @include linearGradient(red 50%, green 100%);
+ */
+@mixin linearGradient($from, $to, $solid: false, $start: top) {
+	@if ($solid) {
+		background-color: $solid;
+	} @else {
+		background-color: $from;
+	}
+	background-image: -webkit-linear-gradient($start, $from, $to);
+	background-image: -moz-linear-gradient($start, $from, $to);
+	background-image: -ms-linear-gradient($start, $from, $to);
+	background-image: -o-linear-gradient($start, $from, $to);
+	background-image: linear-gradient($start, $from, $to);
+}
+
+/*
+ * Apply a CSS3 box-rotate
+ * @include boxRotate(10deg);
+ */
+@mixin boxRotate($deg) {
+	-webkit-transform: rotate($deg);
+	-moz-transform: rotate($deg);
+	-ms-transform: rotate($deg);
+	-o-transform: rotate($deg);
+	transform: rotate($deg);
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.9914448613738104, M12=-0.13052619222005157,M21=0.13052619222005157, M22=0.9914448613738104, sizingMethod='auto expand');
+	zoom: 1;
+}
+
+/*
+ * Box sizing
+ * content-box | border-box | padding-box
+ * @include boxSizing(border-box);
+ */
+@mixin boxSizing($sizing) {
+	-webkit-box-sizing: $sizing;
+	-moz-box-sizing: $sizing;
+	box-sizing: $sizing;
+}
+
+/*
+ * Apply a CSS3 transform-origin
+ * @include setTransformOrigin(origin);
+ */
+@mixin setTransformOrigin($origin) {
+	-webkit-transform-origin:$origin;
+	-moz-transform-origin:$origin;
+	-ms-transform-origin:$origin;
+	-o-transform-origin:$origin;
+	transform-origin:$origin;
+}
+
+/*
+ * Apply a CSS3 transition
+ *
+ * $property The property you want to animate, eg opacity
+ * $duration The duration of the animation, eg 1s
+ * $ms Include -ms-transition; default is false because IE does not support transitionEnd callback
+ *
+ * @include transition(opacity, 0.5s);
+ */
+
+@mixin transition($property, $duration, $ms: false) {
+	-webkit-transition: $property $duration ease-in-out;
+	-moz-transition: $property $duration ease-in-out;
+	-o-transition: $property $duration ease-in-out;
+	@if ($ms) {
+		-ms-transition: $property $duration ease-in-out;
+	}
+	transition: $property $duration ease-in-out;
+}
+
+@mixin transitionLong($property, $duration, $easing:ease-in-out, $delay:false) {
+	@include transitionProperty($property);
+	@include transitionDuration($duration);
+	
+	@if($delay) {
+		@include transitionDelay($delay);
+	}
+	
+	@if($easing) {
+		@include transitionTimingFunction($easing);
+	}
+}
+
+/*
+ * Apply a CSS3 transition-delay
+ * @include transitionDelay(2s);
+ */
+@mixin transitionDelay($delay) {
+	-webkit-transition-delay: $delay;
+	-moz-transition-delay: $delay;
+	-ms-transition-delay: $delay;
+	-o-transition-delay: $delay;
+	transition-delay: $delay;
+}
+
+/*
+ * Apply a CSS3 transition-duration
+ * @include transitionDuration(1s);
+ */
+@mixin transitionDuration($duration) {
+	-webkit-transition-duration: $duration;
+	-moz-transition-duration: $duration;
+	-ms-transition-duration: $duration;
+	-o-transition-duration: $duration;
+	transition-duration: $duration;
+}
+
+/*
+ * Apply a CSS3 transition-property
+ * @include transitionProperty(opacity);
+ * @include transitionProperty((height, width)); Multiple properties can be passed in surrounded by brackets
+ */
+@mixin transitionProperty($property) {
+	-webkit-transition-property: $property;
+	-moz-transition-property: $property;
+	-o-transition-property: $property;
+	-ms-transition-property: $property;
+	transition-property: $property;
+}
+
+/*
+ * Apply a CSS3 transition-timing-function
+ * @include transitionTimingFunction(easing);
+ */
+@mixin transitionTimingFunction($easing) {
+	-webkit-transition-timing-function: $easing;
+	-moz-transition-timing-function: $easing;
+	-ms-transition-timing-function: $easing;
+	-o-transition-timing-function: $easing;
+	transition-timing-function: $easing;
+}
+
+/*
+ * @font-face mixin
+ * @include font-face('family', '../fonts/', 'myfontname');
+ */
+
+@mixin font-face($font-family, $font-url, $font-name) {
+	@font-face {
+	font-family: 'MyFontFamily';
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	src: url('fontname.eot?') format('eot'), 
+		 url('fontname.woff') format('woff'), 
+		 url('fontname.ttf')  format('truetype'),
+		 url('fontname.svg#svgFontName') format('svg');
+}
+
+	@font-face {
+		font: {
+			family: $font-family;
+			style: normal;
+			weight: normal;
+		}
+		src: url($font-url + '/' + $font-name + '.eot') format('eot'), 
+			 url($font-url + '/' + $font-name + '.woff') format('woff'), 
+			 url($font-url + '/' + $font-name + '.ttf')  format('truetype'),
+			 url($font-url + '/' + $font-name + '.svg#' + $font-name) format('svg');
+	}
+}
+
+/*
+ * Used to normalise select dropdowns 
+ * Styles from formalize.me
+ * @include normaliseSelect();
+ */
+@mixin normaliseSelect() {
+	-webkit-appearance: none;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding;
+	background-clip: padding-box;
+	/* IE7 */
+	*padding-top: 2px;
+	*padding-bottom: 1px;
+	*height: auto;
+}

@@ -1,0 +1,28 @@
+/*   
+Theme Name: WordPress Starter Theme
+Theme URI: http://www.THEME.com
+Description: WordPress Starter Theme for use as a starting template for building custom themes.
+Author: Matt Banks
+Author URI: http://www.kernelcreativemedia.com
+Version: 1.0
+*/
+
+// Reset, Variables, Mixins, Etc
+// DO NOT EDIT ORDER OF FILES
+@import "variables";
+@import "base";
+@import "mixins";
+
+// Page and Site Styles
+@import "page";
+
+@import "posts";
+@import "widgets";
+@import "search";
+@import "comments";
+@import "forms";
+
+// Helper Classes, Media Queries, Print, Etc
+@import "helpers";
+@import "mediaqueries";
+@import "print";

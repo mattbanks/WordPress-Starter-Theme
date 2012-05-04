@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<section id="main">
+	<section id="main" role="main">
 		
 		<div class="post" id="post-<?php the_ID(); ?>">
 			

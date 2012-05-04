@@ -1,0 +1,49 @@
+/* COMMENTS */
+	
+#comments { position: relative; margin: 40px 0 0; padding: 40px 0 0 0; border-top: 1px solid #e6e6e6; border-top: 1px solid rgba(0,0,0,0.07); }
+#comments h3 { margin-bottom: 20px; }
+#comments .comment.thread-even { background: #fafafa; background: rgba(0,0,0,0.02); border-bottom: 1px solid #e6e6e6; border-bottom: 1px solid rgba(0,0,0,0.07); }
+#comments .comment { margin-top: 10px; width: 100%; list-style-type: none;}
+#comments .comment .comment-container { position: relative; padding: 20px; }
+#comments .comment-head { margin: 0 0 15px 0; }
+#comments .avatar { float:left; margin: 0 15px 10px 0; }
+#comments .avatar img { margin: 0; vertical-align: middle; border: 1px solid #ddd; padding: 3px; background: #fff; }
+#comments .comment-head .name { margin: 0; font-weight: bold; font-size: 15px; }
+#comments .comment-head .date, #comments .comment-head .edit, #comments .comment-head .perma { font-size: 13px; }
+#comments .comment-entry p  { margin: 0 0 10px 0;}
+#comments .reply { padding-top: 10px; }
+#comments .reply a { -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; background: #fff; color: #555 !important; text-shadow: none; }
+#comments .reply a:hover { background: #fafafa; }
+
+#comments ul.children { margin: 10px 10px 0 25px; padding: 0; }
+#comments ul.children li { border-top: 1px solid #e6e6e6; }
+#comments .cancel-comment-reply { margin: 10px 0; }
+
+#comments .navigation { }
+#comments .navigation a { display: block; margin: 15px 0 0 0; text-decoration: none; }
+#comments .navigation a:hover { }
+
+#comments h3#pings { margin-top: 5px; }
+#comments .pingbacks li.pingback { margin: 10px 0; }
+#comments .pingbacks li.pingback .reply { display: none; }
+
+#respond { margin: 40px 0 0; }
+#respond h3 { margin-bottom: 20px; }
+#respond .left { float: left; width: 200px; margin-right: 15px; }
+#respond .right { float: left; width: 380px; }
+#respond label {  }
+
+#commentform { margin: 15px 0 0 0; }
+#commentform input { margin: 0 15px 15px 0; }
+#commentform input.txt, #commentform textarea { border-color: #ccc #efefef #efefef #ccc; border-width: 1px; border-style: solid;}
+#commentform input.txt { color: #666; background: #fcfcfc; width: 170px; margin: 0 5px 10px 0; padding: 5px 7px; }
+#commentform textarea { color: #666; background: #fcfcfc; width: 95% !important; padding: 5px 7px; }
+
+#commentform #submit { margin: 15px 0 0 0;  }
+
+ol.commentlist li.bypostauthor { border: 1px solid #8eac4b; }
+ol.commentlist li.even { background: #f6f6f6; }
+ol.commentlist li.odd { background: #fff; }
+ol.commentlist li.thread-alt { }
+ol.commentlist li.thread-even { }
+ol.commentlist li.thread-odd { }
