@@ -4,7 +4,7 @@ Version: 2.0
 
 ## Contributors:
 
-Matt Banks ( [@mattbanks](http://twitter.com/mattbanks) / [kernelcreativemedia.com](http://www.kernelcreativemedia.com) / [mjbanks.com](http://www.mattbanks.me) )
+Matt Banks ( [@mattbanks](http://twitter.com/mattbanks) / [kernelcreativemedia.com](http://www.kernelcreativemedia.com) / [mattbanks.me](http://www.mattbanks.me) )
 
 ## Summary
 
@@ -45,6 +45,7 @@ I use [CodeKit](http://incident57.com/codekit/) for SCSS compiling, but feel fre
 
 * added SCSS as preprocessor files
 * upgraded modernizr to 2.5.2
+* upgraded jQuery to 1.7.2
 * renamed script.js to jquery.functions.js
 * functions.php points to minified versions of plugins.js and jquery.functions.js
 * removed unneeded code in functions.php
