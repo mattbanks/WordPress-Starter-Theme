@@ -1,5 +1,6 @@
 /*
  * Mixin for clearfix
+ * @include clearfix;
 */
 @mixin clearfix {
 	&:before, &:after { content: ""; display: table; }
@@ -9,6 +10,7 @@
 
 /*
  * Mixin for placeholder styling
+ * @include placeHolder(#333);
 */
 @mixin placeHolder($color) {
 	&::-webkit-input-placeholder { color:$color; }
@@ -17,6 +19,7 @@
 
 /*
  * Mixin for basic CSS triangles
+ * @include triangle(up, #000, 50px)
 */
 @mixin triangle($direction:up, $color:#000, $size:100px) {
 	@if($direction == up) {
@@ -51,6 +54,7 @@
 
 /*
  * Mixin for selection markup
+ * @include selection(hotpink, white);
 */
 @mixin selection($background, $color, $element:false) {
 	@if($element) {
@@ -284,17 +288,6 @@
  */
 
 @mixin font-face($font-family, $font-url, $font-name) {
-	@font-face {
-	font-family: 'MyFontFamily';
-	font-weight: normal;
-	font-style: normal;
-	font-variant: normal;
-	src: url('fontname.eot?') format('eot'), 
-		 url('fontname.woff') format('woff'), 
-		 url('fontname.ttf')  format('truetype'),
-		 url('fontname.svg#svgFontName') format('svg');
-}
-
 	@font-face {
 		font: {
 			family: $font-family;
