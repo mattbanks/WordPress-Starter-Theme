@@ -8,7 +8,7 @@ Matt Banks ( [@mattbanks](http://twitter.com/mattbanks) / [kernelcreativemedia.c
 
 ## Summary
 
-WordPress Starter Theme for use as a starting template for building custom themes. Uses SCSSS, HTML5 Boilerplate with Modernizr and Normalize.css. Tested with WordPress 3.3.
+WordPress Starter Theme for use as a starting template for building custom themes. Uses SCSS, HTML5 Boilerplate with Modernizr and Normalize.css. Tested with WordPress 3.3.
 
 ## Usage
 
