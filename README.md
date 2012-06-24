@@ -8,13 +8,13 @@ Matt Banks ( [@mattbanks](http://twitter.com/mattbanks) / [kernelcreativemedia.c
 
 ## Summary
 
-WordPress Starter Theme for use as a starting template for building custom themes. Uses SCSS, HTML5 Boilerplate with Modernizr and Normalize.css. Tested with WordPress 3.3.
+WordPress Starter Theme for use as a starting template for building custom themes. Uses Compass/SCSS, HTML5 Boilerplate with Modernizr and Normalize.css. Tested with WordPress 3.3 - 3.4.
 
 ## Usage
 
 Rename folder to your theme name and begin development, code as you will. 
 
-I use [CodeKit](http://incident57.com/codekit/) for SCSS compiling, but feel free to use whatever app or command line tool you prefer. [LiveReload](http://livereload.com/) is another great app on Mac for compiling SCSS.
+I use [CodeKit](http://incident57.com/codekit/) for Compass/SCSS compiling, but feel free to use whatever app or command line tool you prefer. [LiveReload](http://livereload.com/) is another great app on Mac for compiling SCSS.
 
 - Compile `scss/style.scss` to `style.css`
 - Compile `js/plugins.js` to `js/plugins.min.js`
@@ -29,7 +29,7 @@ I use [CodeKit](http://incident57.com/codekit/) for SCSS compiling, but feel fre
 3. jQuery loaded from Google CDN
 4. Media Queries for mobile and tablets ready to populate
 5. Removed comments from pages
-6. SCSS with plenty of mixins ready to go
+6. Compass & SCSS with plenty of mixins ready to go
 7. Much much more
 
 ### Suggested Plugins
