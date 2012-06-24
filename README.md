@@ -69,3 +69,4 @@ Without these projects, this WordPress Starter Theme wouldn't be where it is tod
 * [Normalize.css](http://necolas.github.com/normalize.css)
 * [Blank WordPress Theme by Digging Into WordPress](http://digwp.com/2010/02/blank-wordpress-theme/)
 * [SASS / SCSS](http://sass-lang.com/)
+* [Compass](http://compass-style.org)
