@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 2.0
+Version: 2.1
 
 ## Contributors:
 
@@ -40,6 +40,11 @@ I use [CodeKit](http://incident57.com/codekit/) for SCSS compiling, but feel fre
 * [Gravity Forms](http://www.gravityforms.com/)
 
 ### Changelog
+
+#### Version 2.1
+
+* added compass with config.rb
+* removed mixins covered by compass
 
 #### Version 2.0
 

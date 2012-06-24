@@ -1,5 +1,4 @@
 /* GENERAL */
-
 body { background: white; font: $baseFont; @include clearfix; }
 
 a, a:visited { color: $linkColor; }
@@ -31,7 +30,10 @@ aside { }
 /* FOOTER */
 footer { }
 
-/* PAGE TEMPLATES */
+/****************************************
+PAGE TEMPLATES
+*****************************************/
+
 /* Home Page */
 .home { }
 
