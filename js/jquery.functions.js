@@ -1,6 +1,6 @@
 // remap jQuery to $
-jQuery(document).ready(function($) {
+(function($) {
 	
 	// all Javascript code goes here
 	
-});
+})(jQuery);
