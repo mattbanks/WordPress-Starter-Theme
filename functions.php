@@ -31,7 +31,15 @@
 		return $link;
 	}
 	add_filter('the_content_more_link', 'remove_more_jump_link');
-	
+
+
+	// Show Kitchen Sink in WYSIWYG Editor
+	function unhide_kitchensink($args) {
+		$args['wordpress_adv_hidden'] = false;
+		return $args;
+	}
+	add_filter( 'tiny_mce_before_init', 'unhide_kitchensink' );	
+
 	
 	// Enqueue comment reply script
 	if ( ! function_exists( '_mbbasetheme_comment_reply' ) ) {
