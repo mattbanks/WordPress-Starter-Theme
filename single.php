@@ -2,34 +2,20 @@
 
 	<section id="main" role="main">
 
-		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+		<?php while (have_posts()) : the_post(); ?>
 
-			<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-			
-				<h1><?php the_title(); ?></h1>
-			
-				<?php get_template_part( 'inc', 'meta' ); ?>
+		<?php get_template_part( 'content', 'single' ); ?>
 
-				<div class="entry">
-				
-					<?php the_content(); ?>
+		<?php
+			// If comments are open or we have at least one comment, load up the comment template
+			if ( comments_open() || '0' != get_comments_number() )
+				comments_template( '', true );
+		?>
 
-					<?php wp_link_pages(array('before' => 'Pages: ', 'next_or_number' => 'number')); ?>
-				
-					<?php the_tags( 'Tags: ', ', ', ''); ?>
+		<?php endwhile; ?>
 
-				</div>
-				
-				<?php get_template_part( 'inc', 'socialbuttons' ); ?>
-			
-			</article>
-
-		<?php comments_template(); ?>
-
-		<?php endwhile; endif; ?>
-	
 	</section> <!-- /#main -->
-	
+
 <?php get_sidebar(); ?>
 
 <?php get_footer(); ?>
