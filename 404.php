@@ -1,20 +1,21 @@
 <?php get_header(); ?>
 
 	<section id="main" role="main">
-		
-		<div class="post" id="post-<?php the_ID(); ?>">
-			
-			<h1>Page Not Found</h1>
-			
+
+		<article id="post-0" class="post error404 not-found">
+
+			<h1>Oops! That page can&rsquo;t be found.</h1>
+
 			<div class="entry">
 
-				<p>Error 404</p>
-				<p>Sorry, we couldn't find what you were looking for. Try heading back to the <a href="<?php bloginfo('url'); ?>">home page</a>.</p>
-				
+				<p>It looks like nothing was found at this location. Maybe try heading back to the <a href="<?php echo home_url('/'); ?>">home page</a> or a search?</p>
+
+				<?php get_search_form(); ?>
+
 			</div>
-		
-		</div>
-		
+
+		</article>
+
 	</section> <!-- /#main -->
 
 <?php get_sidebar(); ?>
