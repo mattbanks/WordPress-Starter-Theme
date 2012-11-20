@@ -1,5 +1,5 @@
 <aside>
 
-    <?php if (function_exists('dynamic_sidebar') && dynamic_sidebar('Sidebar Widgets')) : else : endif; ?>
+    <?php dynamic_sidebar('Sidebar Widgets'); ?>
 
 </aside> <!-- /#sidebar -->
