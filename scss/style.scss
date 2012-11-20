@@ -1,4 +1,4 @@
-/*!   
+/*!
 Theme Name: WordPress Starter Theme
 Theme URI: http://www.THEME.com
 Description: WordPress Starter Theme for use as a starting template for building custom themes.
@@ -10,13 +10,14 @@ Version: 1.0
 // Reset, Variables, Mixins, Etc
 // DO NOT EDIT ORDER OF FILES
 @import "variables";
-@import "base";
+@import "normalize";
 @import "mixins";
 
 // Compass imports
-@import "compass/css3";
-@import "compass/typography";
-@import "compass/utilities";
+@import "compass";
+
+// The grid
+@import "grid";
 
 // Page and Site Styles
 @import "page";
