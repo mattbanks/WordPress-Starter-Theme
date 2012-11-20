@@ -4,39 +4,63 @@
 
 		<?php if (have_posts()) : ?>
 
- 			<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
+			<h1>
+				<?php
+					if ( is_category() ) {
+						printf( __( 'Category Archives: %s', 'mattbanks' ), '<span>' . single_cat_title( '', false ) . '</span>' );
 
-			<?php /* If this is a category archive */ if (is_category()) { ?>
-				<h1>Archive for the &#8216;<?php single_cat_title(); ?>&#8217; Category</h1>
+					} elseif ( is_tag() ) {
+						printf( __( 'Tag Archives: %s', 'mattbanks' ), '<span>' . single_tag_title( '', false ) . '</span>' );
 
-			<?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
-				<h1>Posts Tagged &#8216;<?php single_tag_title(); ?>&#8217;</h1>
+					} elseif ( is_author() ) {
+						/* Queue the first post, that way we know
+						 * what author we're dealing with (if that is the case).
+						*/
+						the_post();
+						printf( __( 'Author Archives: %s', 'mattbanks' ), '<span class="vcard"><a class="url fn n" href="' . get_author_posts_url( get_the_author_meta( "ID" ) ) . '" title="' . esc_attr( get_the_author() ) . '" rel="me">' . get_the_author() . '</a></span>' );
+						/* Since we called the_post() above, we need to
+						 * rewind the loop back to the beginning that way
+						 * we can run the loop properly, in full.
+						 */
+						rewind_posts();
 
-			<?php /* If this is a daily archive */ } elseif (is_day()) { ?>
-				<h1>Archive for <?php the_time('F jS, Y'); ?></h1>
+					} elseif ( is_day() ) {
+						printf( __( 'Daily Archives: %s', 'mattbanks' ), '<span>' . get_the_date() . '</span>' );
 
-			<?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
-				<h1>Archive for <?php the_time('F, Y'); ?></h1>
+					} elseif ( is_month() ) {
+						printf( __( 'Monthly Archives: %s', 'mattbanks' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
 
-			<?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
-				<h1 class="pagetitle">Archive for <?php the_time('Y'); ?></h1>
+					} elseif ( is_year() ) {
+						printf( __( 'Yearly Archives: %s', 'mattbanks' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
 
-			<?php /* If this is an author archive */ } elseif (is_author()) { ?>
-				<h1 class="pagetitle">Author Archive</h1>
+					} else {
+						_e( 'Archives', 'mattbanks' );
 
-			<?php /* If this is a paged archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
-				<h1 class="pagetitle">Blog Archives</h1>
-			
-			<?php } ?>
+					}
+				?>
+			</h1>
 
-			<?php get_template_part( 'inc', 'nav' ); ?>
+			<?php
+				if ( is_category() ) {
+					// show an optional category description
+					$category_description = category_description();
+					if ( ! empty( $category_description ) )
+						echo apply_filters( 'category_archive_meta', '<div class="taxonomy-description">' . $category_description . '</div>' );
+
+				} elseif ( is_tag() ) {
+					// show an optional tag description
+					$tag_description = tag_description();
+					if ( ! empty( $tag_description ) )
+						echo apply_filters( 'tag_archive_meta', '<div class="taxonomy-description">' . $tag_description . '</div>' );
+				}
+			?>
 
 			<?php while (have_posts()) : the_post(); ?>
-			
+
 				<article <?php post_class() ?>>
-				
+
 						<h1 id="post-<?php the_ID(); ?>"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h1>
-					
+
 						<?php get_template_part( 'inc', 'meta' ); ?>
 
 						<div class="entry">
@@ -48,13 +72,13 @@
 			<?php endwhile; ?>
 
 			<?php get_template_part( 'inc', 'nav' ); ?>
-			
+
 	<?php else : ?>
 
 		<h1>Nothing found</h1>
 
 	<?php endif; ?>
-	
+
 	</section> <!-- /#main -->
 
 <?php get_sidebar(); ?>
