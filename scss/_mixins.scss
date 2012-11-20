@@ -1,4 +1,20 @@
 /*
+ * Mixin for easy media queries
+ * @include breakpoint(tablet) { SCSS here };
+*/
+@mixin breakpoint($point) {
+	@if $point == biggie {
+		@media (max-width : 1600px) { @content; }
+	}
+	@if $point == tablet {
+		@media (max-width : 1024px) { @content; }
+	}
+	@else if $point == phone {
+		@media (max-width : 768px) { @content; }
+	}
+}
+
+/*
  * Mixin for micro clearfix
  * @include microclearfix;
 */
@@ -118,8 +134,8 @@
 			style: normal;
 			weight: normal;
 		}
-		src: url($font-url + '/' + $font-name + '.eot') format('eot'), 
-			 url($font-url + '/' + $font-name + '.woff') format('woff'), 
+		src: url($font-url + '/' + $font-name + '.eot') format('eot'),
+			 url($font-url + '/' + $font-name + '.woff') format('woff'),
 			 url($font-url + '/' + $font-name + '.ttf')  format('truetype'),
 			 url($font-url + '/' + $font-name + '.svg#' + $font-name) format('svg');
 	}
