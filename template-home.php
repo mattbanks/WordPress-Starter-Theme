@@ -3,14 +3,14 @@
 Template Name: Home Page
 */
 ?>
-	
+
 <?php get_header(); ?>
 
 	<section id="main" role="main">
 
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-			
-		<div class="post" id="post-<?php the_ID(); ?>">
+
+		<article class="post" id="post-<?php the_ID(); ?>">
 
 			<h1><?php the_title(); ?></h1>
 
@@ -22,10 +22,10 @@ Template Name: Home Page
 
 			</div>
 
-		</div>
+		</article>
 
 		<?php endwhile; endif; ?>
-		
+
 	</section> <!-- /#main -->
 
 <?php get_sidebar(); ?>
