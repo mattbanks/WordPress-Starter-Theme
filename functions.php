@@ -1,13 +1,7 @@
 <?php
 
 if ( ! function_exists( '_mbbasetheme_setup' ) ):
-function mattbanks_setup() {
-	// Custom Template Tags
-	require( get_template_directory() . '/inc/template-tags.php' );
-
-	// Custom functions
-	// require( get_template_directory() . '/inc/tweaks.php' );
-
+function _mbbasetheme_setup() {
 	// Add RSS links to head
 	add_theme_support( 'automatic-feed-links' );
 
@@ -24,10 +18,10 @@ function mattbanks_setup() {
 
 	// Register menus
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'mattbanks' ),
+		'primary' => __( 'Primary Menu', 'mbbasetheme' ),
 	) );
 }
-endif; // mattbanks_setup
+endif; // _mbbasetheme_setup
 add_action('after_setup_theme', '_mbbasetheme_setup');
 
 
@@ -83,7 +77,7 @@ function _mbbasetheme_widgets_init() {
 	$allWidgetizedAreas = array("Sidebar Widgets", "Footer");
 	foreach ($allWidgetizedAreas as $WidgetAreaName) {
 		register_sidebar( array(
-			'name' => __( $WidgetAreaName, 'mattbanks' ),
+			'name' => __( $WidgetAreaName, 'mbbasetheme' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget' => '</section>',
 			'before_title' => '<h4 class="widget-title">',
@@ -92,7 +86,6 @@ function _mbbasetheme_widgets_init() {
 	}
 }
 add_action( 'widgets_init', '_mbbasetheme_widgets_init' );
-
 
 
 ?>
