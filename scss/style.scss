@@ -7,14 +7,17 @@ Author URI: http://www.kernelcreativemedia.com
 Version: 1.0
 */
 
+// Compass imports
+@import "compass";
+
 // Reset, Variables, Mixins, Etc
 // DO NOT EDIT ORDER OF FILES
 @import "variables";
 @import "normalize";
 @import "mixins";
 
-// Compass imports
-@import "compass";
+// Globals
+@import "global";
 
 // The grid
 @import "grid";
