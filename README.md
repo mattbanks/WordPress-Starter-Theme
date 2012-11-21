@@ -12,7 +12,7 @@ WordPress Starter Theme for use as a starting template for building custom theme
 
 ## Usage
 
-Rename folder to your theme name and begin development. Code as you will. 
+Rename folder to your theme name and begin development. Code as you will.
 
 I use [CodeKit](http://incident57.com/codekit/) for Compass/SCSS compiling, but feel free to use whatever app or command line tool you prefer. [LiveReload](http://livereload.com/) and [Grunt](http://gruntjs.com/) are also great tools for compiling SCSS.
 
@@ -51,7 +51,7 @@ I use [CodeKit](http://incident57.com/codekit/) for Compass/SCSS compiling, but 
 * Updated social network buttons to latest code
 * Renamed jquery.functions.js to main.js
 * Add flexible grid SCSS
-* Updated to HTML Boilerplate 4
+* Updated to HTML5 Boilerplate 4
 * Updated to Normalize.css 2
 * Updated to Modernizr 2.6.2
 * Include @media bubbling mixins, [via Chris Coyier](http://css-tricks.com/snippets/css/media-queries-for-standard-devices/)
