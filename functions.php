@@ -47,6 +47,15 @@ function _mbbasetheme_imagelink_setup() {
 add_action('admin_init', '_mbbasetheme_imagelink_setup', 10);
 
 
+// Remove Query Strings From Static Resources
+function _mbbasetheme_remove_script_version($src){
+	$parts = explode('?', $src);
+	return $parts[0];
+}
+add_filter('script_loader_src', '_mbbasetheme_remove_script_version', 15, 1);
+add_filter('style_loader_src', '_mbbasetheme_remove_script_version', 15, 1);
+
+
 // Remove Read More Jump
 function _mbbasetheme_remove_more_jump_link($link) {
 	$offset = strpos($link, '#more-');
