@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 2.5
+Version: 2.6
 
 ## Contributors:
 
@@ -41,6 +41,18 @@ I use [CodeKit](http://incident57.com/codekit/) for Compass/SCSS compiling, but 
 * [Gravity Forms](http://www.gravityforms.com/)
 
 ### Changelog
+
+#### Version 2.6
+
+* Break functions out into their own included files
+* Register style before enqueue
+* Redo comments template based on [Underscores Theme](https://github.com/Automattic/_s)
+* Added required classes to _posts.scss to remember to style them
+* Broke register_sidebar() out of loop
+* Add support for custom-header, custom-background, editor-style.css, content_width
+* Add GPL license info to style.scss
+* Add function to remove query strings from static resources
+* Remove shortlink from wp_head
 
 #### Version 2.5
 
