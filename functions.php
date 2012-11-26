@@ -72,7 +72,8 @@ add_filter( 'tiny_mce_before_init', '_mbbasetheme_unhide_kitchensink' );
 // Enqueue scripts and styles
 function _mbbasetheme_scripts() {
 	// CSS first
-	wp_enqueue_style( 'style', get_stylesheet_uri() );
+	wp_register_style('_mbbasetheme_style', get_stylesheet_directory_uri().'/style.css', null, '1.0', 'all' );
+	wp_enqueue_style( '_mbbasetheme_style' );
 	// JavaScript
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
