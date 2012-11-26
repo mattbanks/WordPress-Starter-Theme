@@ -2,13 +2,13 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
 	<title><?php wp_title(''); ?></title>
 	<meta name="viewport" content="width=device-width">
-	<link rel="shortcut icon" href="<?php bloginfo('template_url'); ?>/favicon.ico">
-	<link rel="apple-touch-icon" href="<?php bloginfo('template_url'); ?>/apple-touch-icon.png">
+	<link rel="shortcut icon" href="<?php get_template_directory_uri(); ?>/favicon.ico">
+	<link rel="apple-touch-icon" href="<?php get_template_directory_uri(); ?>/apple-touch-icon.png">
 	<?php wp_head(); ?>
 </head>
 
