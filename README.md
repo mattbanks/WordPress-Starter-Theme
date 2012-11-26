@@ -53,6 +53,7 @@ I use [CodeKit](http://incident57.com/codekit/) for Compass/SCSS compiling, but 
 * Add GPL license info to style.scss
 * Add function to remove query strings from static resources
 * Remove shortlink from wp_head
+* Ran theme through Theme Check plugin to verify things were in order
 
 #### Version 2.5
 
