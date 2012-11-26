@@ -6,7 +6,7 @@
 
 		<?php get_template_part( 'content', 'single' ); ?>
 
-		<?php comment_form(); ?>
+		<?php comments_template(); ?>
 
 		<?php endwhile; ?>
 
