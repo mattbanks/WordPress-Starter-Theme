@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 2.6
+Version: 2.6.1
 
 ## Contributors:
 
@@ -41,6 +41,11 @@ I use [CodeKit](http://incident57.com/codekit/) for Compass/SCSS compiling, but 
 * [Gravity Forms](http://www.gravityforms.com/)
 
 ### Changelog
+
+#### Version 2.6.1
+
+* Fix broken call in sidebar.php
+* Properly translate widget titles
 
 #### Version 2.6
 
