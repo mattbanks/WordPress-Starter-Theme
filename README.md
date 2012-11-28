@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 2.6.1
+Version: 2.6.2
 
 ## Contributors:
 
@@ -41,6 +41,11 @@ I use [CodeKit](http://incident57.com/codekit/) for Compass/SCSS compiling, but 
 * [Gravity Forms](http://www.gravityforms.com/)
 
 ### Changelog
+
+#### Version 2.6.2
+
+* Move border-box from `_grid.scss` to `_global.scss`
+* Add border-box support for pseudo elements, because it makes the world a better place
 
 #### Version 2.6.1
 
