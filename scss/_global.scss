@@ -106,3 +106,21 @@ textarea {
 	clip: rect(1px, 1px, 1px, 1px);
 	position: absolute !important;
 }
+
+
+/*
+ * Box Sizing
+ *
+ * Set that shit to border-box, yo. And fix those pesky pseudo elements
+ */
+
+/* ==========================================================================
+   Border-box all the things!
+   ========================================================================== */
+*,
+:before,
+:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
