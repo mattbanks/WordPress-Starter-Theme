@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 2.6.2
+Version: 2.6.3
 
 ## Contributors:
 
@@ -41,6 +41,10 @@ I use [CodeKit](http://incident57.com/codekit/) for Compass/SCSS compiling, but 
 * [Gravity Forms](http://www.gravityforms.com/)
 
 ### Changelog
+
+#### Version 2.6.3
+
+* Fix text selection bg and color not pulling from variables
 
 #### Version 2.6.2
 
