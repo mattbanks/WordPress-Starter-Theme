@@ -30,12 +30,14 @@ body {
  */
 
 ::-moz-selection {
-    background: #b3d4fc;
+    background: $selectionColor;
+    color: $selectionTextColor;
     text-shadow: none;
 }
 
 ::selection {
-    background: #b3d4fc;
+    background: $selectionColor;
+    color: $selectionTextColor;
     text-shadow: none;
 }
 
