@@ -1,3 +1,12 @@
+<?php
+/**
+ * The template used for displaying post meta information
+ *
+ * @package mattbanks
+ * @since mattbanks 2.5
+ */
+?>
+
 <div class="meta">
 	<em>Posted on:</em> <?php the_time('F jS, Y') ?>
 	<em>by</em> <?php the_author() ?>

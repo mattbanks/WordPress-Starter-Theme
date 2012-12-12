@@ -1,3 +1,12 @@
+<?php
+/**
+ * The template used for displaying social sharing buttons
+ *
+ * @package mattbanks
+ * @since mattbanks 2.5
+ */
+?>
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
