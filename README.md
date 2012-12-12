@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 2.6.5
+Version: 2.6.6
 
 ## Contributors:
 
@@ -41,6 +41,10 @@ I use [CodeKit](http://incident57.com/codekit/) for Compass/SCSS compiling, but 
 * [Gravity Forms](http://www.gravityforms.com/)
 
 ### Changelog
+
+#### Version 2.6.6
+
+* Add grid column sizes I typically use, general code cleanup
 
 #### Version 2.6.5
 
