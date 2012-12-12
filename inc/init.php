@@ -8,6 +8,9 @@ function _mbbasetheme_setup() {
 	// Enable Post Thumbnails
 	add_theme_support( 'post-thumbnails' );
 
+	// Add Image Sizes
+	// add_image_size( $name, $width = 0, $height = 0, $crop = false );
+
 	// Enable Custom Headers
 	// add_theme_support( 'custom-header' );
 
@@ -21,7 +24,7 @@ function _mbbasetheme_setup() {
 	if ( ! isset( $content_width ) ) $content_width = 900;
 
 	// Add Post Formats Theme Support
-	// add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video'));
+	// add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video') );
 
 	// Clean up the head
 	remove_action('wp_head', 'rsd_link');
