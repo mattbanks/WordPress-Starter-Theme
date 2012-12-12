@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 2.6.4
+Version: 2.6.5
 
 ## Contributors:
 
@@ -41,6 +41,12 @@ I use [CodeKit](http://incident57.com/codekit/) for Compass/SCSS compiling, but 
 * [Gravity Forms](http://www.gravityforms.com/)
 
 ### Changelog
+
+#### Version 2.6.5
+
+* Fix calls for favicon and apple-touch-icon in header
+* Remove older IE conditional comments since I don't support IE7 and below
+* Change chromeframe call to include IE7
 
 #### Version 2.6.4
 
