@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 2.6.3
+Version: 2.6.4
 
 ## Contributors:
 
@@ -41,6 +41,13 @@ I use [CodeKit](http://incident57.com/codekit/) for Compass/SCSS compiling, but 
 * [Gravity Forms](http://www.gravityforms.com/)
 
 ### Changelog
+
+#### Version 2.6.4
+
+* Clean up footer dynamic_sidebar() call
+* Add comment blocks for template parts
+* Add functions to remove dashboard widgets, remove admin menu pages, reorder admin menu
+* Include add_image_size if needed in init
 
 #### Version 2.6.3
 
