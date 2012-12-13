@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 2.6.6
+Version: 2.6.7
 
 ## Contributors:
 
@@ -41,6 +41,10 @@ I use [CodeKit](http://incident57.com/codekit/) for Compass/SCSS compiling, but 
 * [Gravity Forms](http://www.gravityforms.com/)
 
 ### Changelog
+
+#### Version 2.6.7
+
+* Fix remove_menu_page to trigger on admin_menu instead of admin_init
 
 #### Version 2.6.6
 
