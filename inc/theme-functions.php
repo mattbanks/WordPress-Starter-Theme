@@ -20,7 +20,7 @@ function _mbbasetheme_remove_menu_pages() {
 	// remove_menu_page('edit.php');
 	// remove_menu_page('edit-comments.php');
 }
-add_action( 'admin_init', '_mbbasetheme_remove_menu_pages' );
+add_action( 'admin_menu', '_mbbasetheme_remove_menu_pages' );
 
 
 // Change Admin Menu Order
