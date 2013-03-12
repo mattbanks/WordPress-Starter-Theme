@@ -2,7 +2,7 @@
 
 	<section id="main" role="main">
 
-		<?php if (have_posts()) : ?>
+		<?php if ( have_posts() ) : ?>
 
 			<h1>
 				<?php
@@ -55,7 +55,7 @@
 				}
 			?>
 
-			<?php while (have_posts()) : the_post(); ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 
 				<article <?php post_class() ?>>
 
