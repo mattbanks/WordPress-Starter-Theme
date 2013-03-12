@@ -2,11 +2,11 @@
 
 	<section id="main" role="main">
 
-		<?php while (have_posts()) : the_post(); ?>
+		<?php while ( have_posts() ) : the_post(); ?>
 
-		<?php get_template_part( 'content', 'single' ); ?>
+			<?php get_template_part( 'content', 'single' ); ?>
 
-		<?php comments_template(); ?>
+			<?php comments_template(); ?>
 
 		<?php endwhile; ?>
 
