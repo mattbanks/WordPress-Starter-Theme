@@ -11,7 +11,7 @@
 
 	<h1><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h1>
 
-	<?php get_template_part( 'inc', 'meta' ); ?>
+	<?php get_template_part( 'templates/partials/inc', 'meta' ); ?>
 
 	<div class="entry">
 		<?php the_content(); ?>

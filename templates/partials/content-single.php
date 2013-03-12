@@ -11,7 +11,7 @@
 
 	<h1><?php the_title(); ?></h1>
 
-	<?php get_template_part( 'inc', 'meta' ); ?>
+	<?php get_template_part( 'templates/partials/inc', 'meta' ); ?>
 
 	<div class="entry">
 
@@ -23,6 +23,6 @@
 
 	</div>
 
-	<?php get_template_part( 'inc', 'socialbuttons' ); ?>
+	<?php get_template_part( 'templates/partials/inc', 'socialbuttons' ); ?>
 
 </article>
