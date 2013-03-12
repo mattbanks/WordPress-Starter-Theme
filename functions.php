@@ -1,13 +1,32 @@
 <?php
 
-// Pull in all functions
-require( get_template_directory() . '/inc/init.php' );
-require( get_template_directory() . '/inc/enqueue.php' );
-require( get_template_directory() . '/inc/theme-functions.php' );
-require( get_template_directory() . '/inc/widgets.php' );
-require( get_template_directory() . '/inc/theme-comments.php' );
+/****************************************
+Theme Setup
+*****************************************/
 
-// Put other functions here
+require_once( get_template_directory() . '/lib/init.php' );
+require_once( get_template_directory() . '/lib/theme-helpers.php' );
+require_once( get_template_directory() . '/lib/theme-functions.php' );
+require_once( get_template_directory() . '/lib/theme-comments.php' );
 
 
-?>
+/****************************************
+Require Plugins
+*****************************************/
+
+require_once( get_template_directory() . '/lib/class-tgm-plugin-activation.php' );
+require_once( get_template_directory() . '/lib/theme-require-plugins.php' );
+
+add_action( 'tgmpa_register', 'mb_register_required_plugins' );
+
+
+/****************************************
+Misc Theme Functions
+*****************************************/
+
+/**
+ * Define custom post type capabilities for use with Members
+ */
+function mb_add_post_type_caps() {
+	// mb_add_capabilities( 'portfolio' );
+}

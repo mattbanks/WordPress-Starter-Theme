@@ -1,6 +1,6 @@
 		<footer>
-			<?php dynamic_sidebar('Footer'); ?>
-			<p>&copy; <?php echo date("Y"); echo " "; bloginfo('name'); ?></p>
+			<?php dynamic_sidebar( 'Footer' ); ?>
+			<p>&copy; <?php echo date( "Y" ); echo " "; bloginfo( 'name' ); ?></p>
 		</footer>
 
 	</div> <!-- /#container -->

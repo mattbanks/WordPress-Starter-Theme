@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 2.6.7
+Version: 3.0
 
 ## Contributors:
 
@@ -8,19 +8,24 @@ Matt Banks ( [@mattbanks](http://twitter.com/mattbanks) / [kernelcreativemedia.c
 
 ## Summary
 
-WordPress Starter Theme for use as a starting template for building custom themes. Uses Compass/SCSS, HTML5 Boilerplate 4 with Modernizr and Normalize.css. Tested with WordPress 3.4 - 3.5.
+WordPress Starter Theme for use as a starting template for building custom themes. Uses Compass/SCSS, HTML5 Boilerplate 4 with Modernizr and Normalize.css. Tested with WordPress 3.5.1.
 
 ## Usage
 
-Rename folder to your theme name and begin development. Code as you will.
+The theme is setup to use [Grunt](http://gruntjs.com/) to compile Compass/SCSS, lint, concatenate and minify JavaScript (with source maps), optimize images, and [LiveReload](http://livereload.com/) the browser (with extension), with flexibility to add any additional tasks via the Gruntfile. Alternatively, you can use [CodeKit](http://incident57.com/codekit/) or whatever else you prefer to compile the SCSS and manage the JavaScript.
 
-I use [CodeKit](http://incident57.com/codekit/) for Compass/SCSS compiling, but feel free to use whatever app or command line tool you prefer. [LiveReload](http://livereload.com/) and [Grunt](http://gruntjs.com/) are also great tools for compiling SCSS.
+Rename folder to your theme name, change the `assets/scss/style.scss` intro block to your theme information. Open the theme directory in terminal and run `npm install` to pull in all Grunt dependencies. Run `grunt` to execute tasks. Code as you will. If you have the LiveReload browser extension, it will reload after any SCSS or JS changes. To optimize images, run `grunt imagemin`.
 
-- Compile `scss/style.scss` to `style.css` (defined in config.rb for Compass)
-- Compile `js/plugins.js` to `js/plugins.min.js`
-- Compile `js/main.js` to `js/main.min.js`
+- Compile `assets/scss/style.scss` to `style.css` (all paths defined in config.rb for Compass)
+- Compile `assets/scss/editor-style.scss` to `editor-style.css`
+- Concatenate and minify all plugins in `assets/js/vender` and `assets/js/source/plugins.js` to `assets/js/plugins.min.js`
+- Minify `assets/js/source/main.js` to `assets/js/main.min.js`
 - ??
 - Profit
+
+### Deployment
+
+The theme includes deployments via [grunt-rsync](https://github.com/jedrichards/grunt-rsync). The Gruntfile includes setups for staging and production - edit your paths and host, then run `grunt rsync:staging` or `grunt rsync:production` to deploy your files via rsync.
 
 ### Features
 
@@ -41,6 +46,15 @@ I use [CodeKit](http://incident57.com/codekit/) for Compass/SCSS compiling, but 
 * [Gravity Forms](http://www.gravityforms.com/)
 
 ### Changelog
+
+#### Version 3.0
+
+* reorganize code in `assets` folder for fonts, images, js and scss
+* setup Gruntfile to use Grunt for all compiling, concatenation and minification
+* add deployments via rsync
+* update to normalize v2.1.0
+* refactor theme functions in `lib` folder
+* general code cleanup
 
 #### Version 2.6.7
 

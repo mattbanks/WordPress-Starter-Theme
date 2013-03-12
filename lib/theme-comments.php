@@ -55,5 +55,3 @@ function _mbbasetheme_comment( $comment, $args, $depth ) {
 	endswitch;
 }
 endif; // ends check for _mbbasetheme_comment()
-
-?>
