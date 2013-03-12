@@ -1,14 +1,8 @@
-<?php
-/*
-Template Name: Home Page
-*/
-?>
-
 <?php get_header(); ?>
 
 	<section id="main" role="main">
 
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 		<article class="post" id="post-<?php the_ID(); ?>">
 
@@ -18,7 +12,7 @@ Template Name: Home Page
 
 				<?php the_content(); ?>
 
-				<?php wp_link_pages(array('before' => 'Pages: ', 'next_or_number' => 'number')); ?>
+				<?php wp_link_pages( array( 'before' => 'Pages: ', 'next_or_number' => 'number' ) ); ?>
 
 			</div>
 
