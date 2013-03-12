@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 3.0
+Version: 3.1
 
 ## Contributors:
 
@@ -46,6 +46,11 @@ The theme includes deployments via [grunt-rsync](https://github.com/jedrichards/
 * [Gravity Forms](http://www.gravityforms.com/)
 
 ### Changelog
+
+#### Version 3.1
+
+* create `templates` folder and include example portfolio page templte
+* create `templates/partials` and move all template parts there for cleaner directory structure, update all `get_template_part()` calls to use new path
 
 #### Version 3.0
 
