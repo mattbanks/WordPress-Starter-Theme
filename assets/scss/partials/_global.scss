@@ -25,19 +25,17 @@ body {
 
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
- * These selection declarations have to be separate.
+ * These selection rule sets have to be separate.
  * Customize the background color to match your design.
  */
 
 ::-moz-selection {
-    background: $selectionColor;
-    color: $selectionTextColor;
+    background: #b3d4fc;
     text-shadow: none;
 }
 
 ::selection {
-    background: $selectionColor;
-    color: $selectionTextColor;
+    background: #b3d4fc;
     text-shadow: none;
 }
 
