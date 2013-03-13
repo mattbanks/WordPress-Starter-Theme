@@ -8,7 +8,7 @@ Matt Banks ( [@mattbanks](http://twitter.com/mattbanks) / [kernelcreativemedia.c
 
 ## Summary
 
-WordPress Starter Theme for use as a starting template for building custom themes. Uses Compass/SCSS, HTML5 Boilerplate 4 with Modernizr and Normalize.css. Tested with WordPress 3.5.1.
+WordPress Starter Theme for use as a starting template for building custom themes. Uses Compass/SCSS, HTML5 Boilerplate 4 with Modernizr and Normalize.css, and Grunt for all tasks. Tested with WordPress 3.5.1.
 
 ## Usage
 
@@ -151,8 +151,8 @@ Without these projects, this WordPress Starter Theme wouldn't be where it is tod
 
 * [HTML5 Boilerplate](http://html5boilerplate.com)
 * [Normalize.css](http://necolas.github.com/normalize.css)
-* [Blank WordPress Theme by Digging Into WordPress](http://digwp.com/2010/02/blank-wordpress-theme/)
 * [SASS / SCSS](http://sass-lang.com/)
 * [Compass](http://compass-style.org)
 * [Don't Overthink It Grids](css-tricks.com/dont-overthink-it-grids/)
 * [Underscores Theme](https://github.com/Automattic/_s)
+* [Grunt](http://gruntjs.com/)
