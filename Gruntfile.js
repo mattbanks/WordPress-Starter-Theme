@@ -17,6 +17,7 @@ module.exports = function(grunt) {
                 "newcap": true,
                 "es5": true,
                 "esnext": true,
+                "camelcase": true,
                 "latedef": true,
                 "noarg": true,
                 "node": true,
@@ -25,6 +26,7 @@ module.exports = function(grunt) {
                 "trailing": true,
                 "jquery": true,
                 "curly": true,
+                "supernew": true,
                 "globals": {
                     "Backbone": true,
                     "_": true,
