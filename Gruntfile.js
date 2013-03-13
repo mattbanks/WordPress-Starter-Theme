@@ -24,7 +24,12 @@ module.exports = function(grunt) {
                 "browser": true,
                 "trailing": true,
                 "jquery": true,
-                "curly": true
+                "curly": true,
+                "globals": {
+                    "Backbone": true,
+                    "_": true,
+                    "jQuery": true
+                }
             },
             all: [
                 'Gruntfile.js',
