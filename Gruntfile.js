@@ -31,7 +31,8 @@ module.exports = function(grunt) {
                     "Backbone": true,
                     "_": true,
                     "jQuery": true
-                }
+                },
+                "force": true
             },
             all: [
                 'Gruntfile.js',
