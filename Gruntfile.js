@@ -10,28 +10,7 @@ module.exports = function(grunt) {
         // javascript linting with jshint
         jshint: {
             options: {
-                "bitwise": true,
-                "eqeqeq": true,
-                "eqnull": true,
-                "immed": true,
-                "newcap": true,
-                "es5": true,
-                "esnext": true,
-                "camelcase": true,
-                "latedef": true,
-                "noarg": true,
-                "node": true,
-                "undef": true,
-                "browser": true,
-                "trailing": true,
-                "jquery": true,
-                "curly": true,
-                "supernew": true,
-                "globals": {
-                    "Backbone": true,
-                    "_": true,
-                    "jQuery": true
-                },
+                jshintrc: '.jshintrc',
                 "force": true
             },
             all: [
@@ -73,11 +52,19 @@ module.exports = function(grunt) {
         regarde: {
             compass: {
                 files: 'assets/scss/**/*',
-                tasks: ['compass', 'livereload']
+                tasks: ['compass']
             },
-            js: {
+            sourcejs: {
                 files: '<%= jshint.all %>',
-                tasks: ['jshint', 'uglify', 'livereload']
+                tasks: ['jshint', 'uglify']
+            },
+            minjs: {
+                files: 'assets/js/*.min.js',
+                tasks: ['livereload']
+            },
+            css: {
+                files: 'style.css',
+                tasks: ['livereload']
             }
         },
 
@@ -105,7 +92,7 @@ module.exports = function(grunt) {
                 host: "user@host.com",
                 recursive: true,
                 syncDest: true,
-                exclude: ['.git*', 'node_modules', '.sass-cache', 'Gruntfile.js', 'package.json', '.DS_Store', 'README.md', 'config.rb']
+                exclude: ['.git*', 'node_modules', '.sass-cache', 'Gruntfile.js', 'package.json', '.DS_Store', 'README.md', 'config.rb', '.jshintrc']
             },
             production: {
                 src: "./",
