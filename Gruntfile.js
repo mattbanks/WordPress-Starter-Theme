@@ -1,10 +1,35 @@
 'use strict';
 module.exports = function(grunt) {
 
+    // load all grunt tasks
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
     grunt.initConfig({
 
-        // live reload, in case you want to change the port or anything
-        livereload: {
+        // watch for changes and trigger compass, jshint, uglify and livereload
+        watch: {
+            compass: {
+                files: ['assets/scss/**/*.{scss,sass}'],
+                tasks: ['compass']
+            },
+            js: {
+                files: '<%= jshint.all %>',
+                tasks: ['jshint', 'uglify']
+            },
+            livereload: {
+                files: ['*.css', 'assets/js/*.js', '*.html', '*.php', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}'],
+                tasks: ['livereload']
+            }
+        },
+
+        // compass and scss
+        compass: {
+            dist: {
+                options: {
+                    config: 'config.rb',
+                    force: true
+                }
+            }
         },
 
         // javascript linting with jshint
@@ -38,36 +63,6 @@ module.exports = function(grunt) {
             }
         },
 
-        // compass and scss
-        compass: {
-            dist: {
-                options: {
-                    config: 'config.rb',
-                    force: true
-                }
-            }
-        },
-
-        // regarde to watch for changes and trigger compass, jshint, uglify and live reload
-        regarde: {
-            compass: {
-                files: 'assets/scss/**/*',
-                tasks: ['compass']
-            },
-            sourcejs: {
-                files: '<%= jshint.all %>',
-                tasks: ['jshint', 'uglify']
-            },
-            minjs: {
-                files: 'assets/js/*.min.js',
-                tasks: ['livereload']
-            },
-            css: {
-                files: 'style.css',
-                tasks: ['livereload']
-            }
-        },
-
         // image optimization
         imagemin: {
             dist: {
@@ -85,7 +80,7 @@ module.exports = function(grunt) {
         },
 
         // deploy via rsync
-        rsync: {
+        deploy: {
             staging: {
                 src: "./",
                 dest: "~/path/to/theme",
@@ -106,22 +101,14 @@ module.exports = function(grunt) {
 
     });
 
-    // load tasks
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-compass');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-regarde');
-    grunt.loadNpmTasks('grunt-contrib-livereload');
-    grunt.loadNpmTasks('grunt-rsync');
+    // rename tasks
+    grunt.renameTask('regarde', 'watch');
+    grunt.renameTask('rsync', 'deploy');
 
     // register task
     grunt.registerTask('default', [
         'livereload-start',
-        'jshint',
-        'compass',
-        'uglify',
-        'regarde'
+        'watch'
     ]);
 
 };
