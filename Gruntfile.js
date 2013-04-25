@@ -17,7 +17,7 @@ module.exports = function(grunt) {
                 tasks: ['jshint', 'uglify']
             },
             livereload: {
-                files: ['*.css', 'assets/js/*.js', '*.html', '*.php', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}'],
+                files: ['*.css', 'assets/css/*.css', 'assets/js/*.js', '*.html', '*.php', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}'],
                 tasks: ['livereload']
             }
         },
