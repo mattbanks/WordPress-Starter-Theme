@@ -8,6 +8,9 @@ module.exports = function(grunt) {
 
         // watch for changes and trigger compass, jshint, uglify and livereload
         watch: {
+            options: {
+                livereload: true,
+            },
             compass: {
                 files: ['assets/scss/**/*.{scss,sass}'],
                 tasks: ['compass']
@@ -17,8 +20,7 @@ module.exports = function(grunt) {
                 tasks: ['jshint', 'uglify']
             },
             livereload: {
-                files: ['*.css', 'assets/js/*.js', '*.html', '*.php', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}'],
-                tasks: ['livereload']
+                files: ['*.html', '*.php', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
             }
         },
 
@@ -102,13 +104,9 @@ module.exports = function(grunt) {
     });
 
     // rename tasks
-    grunt.renameTask('regarde', 'watch');
     grunt.renameTask('rsync', 'deploy');
 
     // register task
-    grunt.registerTask('default', [
-        'livereload-start',
-        'watch'
-    ]);
+    grunt.registerTask('default', ['watch']);
 
 };
