@@ -1,3 +1,9 @@
+// Font Face
+// @include fontface('FONT_NAME', 'assets/fonts/', 'FONT_FAMILY');
+
+// Structure
+$pageWidth: 1000px;
+
 // Text Selection
 $selectionColor: orange;
 $selectionTextColor: #fff;
@@ -5,11 +11,5 @@ $selectionTextColor: #fff;
 // Links
 $linkColor: red;
 $linkHoverColor: blue;
-
-// Fonts
-$baseFont: 14px/1.4 sans-serif;
-
-// Structure
-$pageWidth: 960px;
 
 // Other
