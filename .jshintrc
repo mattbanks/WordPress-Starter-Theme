@@ -4,7 +4,6 @@
     "eqnull": true,
     "immed": true,
     "newcap": true,
-    "es5": true,
     "esnext": true,
     "camelcase": true,
     "latedef": true,
