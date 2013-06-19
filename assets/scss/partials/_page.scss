@@ -1,18 +1,31 @@
 /* GENERAL */
-body { background: white; font: $baseFont; }
+body {
+	background: white;
+}
 
-a, a:visited { color: $linkColor; }
-a:hover { color: $linkHoverColor; }
+a,
+a:visited {
+	color: $linkColor;
+}
+a:hover {
+	color: $linkHoverColor;
+}
 
 /* HEADINGS / TYPOGRAPHY */
-h1, h2, h3, h4 { font-weight: normal; margin: 0 0 10px 0; }
+h1, h2, h3, h4 {
+	font-weight: normal;
+	margin: 0 0 10px 0;
+}
 h1 { }
 h2 { }
 h3 { }
 h4.widgettitle { }
 
 /* STRUCTURE */
-#container { width: $pageWidth; margin: 20px auto; }
+#container {
+	max-width: $pageWidth;
+	margin: 20px auto;
+}
 
 /* HEADER */
 header { }
