@@ -14,9 +14,9 @@ Version: 1.0
 
 // Reset, Variables, Mixins, Etc
 // DO NOT EDIT ORDER OF FILES
+@import "partials/mixins";
 @import "partials/variables";
 @import "partials/normalize";
-@import "partials/mixins";
 
 // Globals
 @import "partials/global";
