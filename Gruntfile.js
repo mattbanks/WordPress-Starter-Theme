@@ -8,9 +8,6 @@ module.exports = function(grunt) {
 
         // watch for changes and trigger compass, jshint, uglify and livereload
         watch: {
-            options: {
-                livereload: true,
-            },
             compass: {
                 files: ['assets/scss/**/*.{scss,sass}'],
                 tasks: ['compass']
@@ -20,7 +17,8 @@ module.exports = function(grunt) {
                 tasks: ['jshint', 'uglify']
             },
             livereload: {
-                files: ['*.html', '*.php', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
+                options: { livereload: true },
+                files: ['style.css', 'assets/js/*.js', '*.html', '*.php', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
             }
         },
 
@@ -48,16 +46,23 @@ module.exports = function(grunt) {
 
         // uglify to concat, minify, and make source maps
         uglify: {
-            dist: {
+            plugins: {
                 options: {
-                    sourceMap: 'assets/js/map/source-map.js'
+                    sourceMap: 'assets/js/map/source-map-plugins.js'
                 },
                 files: {
                     'assets/js/plugins.min.js': [
                         'assets/js/source/plugins.js',
                         'assets/js/vendor/**/*.js',
                         '!assets/js/vendor/modernizr*.js'
-                    ],
+                    ]
+                }
+            },
+            main: {
+                options: {
+                    sourceMap: 'assets/js/map/source-map-main.js'
+                },
+                files: {
                     'assets/js/main.min.js': [
                         'assets/js/source/main.js'
                     ]
