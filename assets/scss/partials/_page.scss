@@ -1,7 +1,5 @@
 /* GENERAL */
-body {
-	background: white;
-}
+body { }
 
 a,
 a:visited {
@@ -9,6 +7,16 @@ a:visited {
 }
 a:hover {
 	color: $linkHoverColor;
+}
+
+::-moz-selection {
+    background: $selectionColor;
+    text-shadow: none;
+}
+
+::selection {
+    background: $selectionColor;
+    text-shadow: none;
 }
 
 /* HEADINGS / TYPOGRAPHY */
