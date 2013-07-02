@@ -48,7 +48,7 @@ module.exports = function(grunt) {
         uglify: {
             plugins: {
                 options: {
-                    sourceMap: 'assets/js/map/source-map-plugins.js'
+                    sourceMap: 'assets/js/map/source-map-plugins.js.map'
                 },
                 files: {
                     'assets/js/plugins.min.js': [
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
             },
             main: {
                 options: {
-                    sourceMap: 'assets/js/map/source-map-main.js'
+                    sourceMap: 'assets/js/map/source-map-main.js.map'
                 },
                 files: {
                     'assets/js/main.min.js': [
