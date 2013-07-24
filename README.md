@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 3.2
+Version: 3.3
 
 ## Contributors:
 
@@ -8,7 +8,7 @@ Matt Banks ( [@mattbanks](http://twitter.com/mattbanks) / [kernelcreativemedia.c
 
 ## Summary
 
-WordPress Starter Theme for use as a starting template for building custom themes. Uses Compass/SCSS, HTML5 Boilerplate 4 with Modernizr and Normalize.css, and Grunt for all tasks. Tested with WordPress 3.5.1.
+WordPress Starter Theme for use as a starting template for building custom themes. Uses Compass/SCSS, HTML5 Boilerplate 4 with Modernizr and Normalize.css, and Grunt for all tasks. Tested with WordPress 3.6 RC2.
 
 ## Usage
 
@@ -22,6 +22,10 @@ Rename folder to your theme name, change the `assets/scss/style.scss` intro bloc
 - Minify `assets/js/source/main.js` to `assets/js/main.min.js`
 - ??
 - Profit
+
+### Bower
+
+Supports [bower](https://github.com/bower/bower) to install and manage JavaScript dependencies in the `assets/js/vendor` folder.
 
 ### Deployment
 
@@ -45,7 +49,13 @@ The theme includes deployments via [grunt-rsync](https://github.com/jedrichards/
 * [W3 Total Cache](http://wordpress.org/extend/plugins/w3-total-cache/)
 * [Gravity Forms](http://www.gravityforms.com/)
 
+![dependencies](https://david-dm.org/mattbanks/WordPress-Starter-Theme.png)
+
 ### Changelog
+
+#### Version 3.3
+
+* add bower support with `.bowerrc` (thanks [tjtate](https://github.com/tjtate))
 
 #### Version 3.2
 
