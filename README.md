@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 3.3
+Version: 3.4
 
 ## Contributors:
 
@@ -18,10 +18,12 @@ Rename folder to your theme name, change the `assets/scss/style.scss` intro bloc
 
 - Compile `assets/scss/style.scss` to `style.css` (all paths defined in config.rb for Compass)
 - Compile `assets/scss/editor-style.scss` to `editor-style.css`
-- Concatenate and minify all plugins in `assets/js/vender` and `assets/js/source/plugins.js` to `assets/js/plugins.min.js`
+- Concatenate and minify plugins in `assets/js/vender` and `assets/js/source/plugins.js` to `assets/js/plugins.min.js`
 - Minify `assets/js/source/main.js` to `assets/js/main.min.js`
 - ??
 - Profit
+
+To concatenate and minify your jQuery plugins, add them to the `assets/js/vendor` directory and add the `js` filename and path to the `Gruntfile` `uglify` task. Previous versions of the starter theme automatically pulled all plugins in the `vendor` directory, but this has changed to allow more granular control and for managing plugins and assets with bower.
 
 ### Bower
 
@@ -52,6 +54,10 @@ The theme includes deployments via [grunt-rsync](https://github.com/jedrichards/
 ![dependencies](https://david-dm.org/mattbanks/WordPress-Starter-Theme.png)
 
 ### Changelog
+
+#### Version 3.4
+
+* manually manage plugins in `Gruntfile` instead of automatically pulling all files to streamline bower usage.
 
 #### Version 3.3
 
