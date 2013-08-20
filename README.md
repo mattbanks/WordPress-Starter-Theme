@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 3.4
+Version: 3.4.1
 
 ## Contributors:
 
@@ -54,6 +54,12 @@ The theme includes deployments via [grunt-rsync](https://github.com/jedrichards/
 ![dependencies](https://david-dm.org/mattbanks/WordPress-Starter-Theme.png)
 
 ### Changelog
+
+#### Version 3.4.1
+
+* update grunt dependencies
+* switch to load-grunt-tasks for loading everything
+* restructure deploy task based on grunt-rsync updates
 
 #### Version 3.4
 

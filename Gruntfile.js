@@ -1,8 +1,8 @@
 'use strict';
 module.exports = function(grunt) {
 
-    // load all grunt tasks
-    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    // load all grunt tasks matching the `grunt-*` pattern
+    require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
 
@@ -87,21 +87,20 @@ module.exports = function(grunt) {
 
         // deploy via rsync
         deploy: {
-            staging: {
+            options: {
+                args: ["--verbose"],
                 src: "./",
-                dest: "~/path/to/theme",
-                host: "user@host.com",
+                exclude: ['.git*', 'node_modules', '.sass-cache', 'Gruntfile.js', 'package.json', '.DS_Store', 'README.md', 'config.rb', '.jshintrc'],
                 recursive: true,
-                syncDest: true,
-                exclude: ['.git*', 'node_modules', '.sass-cache', 'Gruntfile.js', 'package.json', '.DS_Store', 'README.md', 'config.rb', '.jshintrc']
+                syncDestIgnoreExcl: true
+            },
+            staging: {
+                dest: "~/path/to/theme",
+                host: "user@host.com"
             },
             production: {
-                src: "./",
                 dest: "~/path/to/theme",
-                host: "user@host.com",
-                recursive: true,
-                syncDest: true,
-                exclude: '<%= rsync.staging.exclude %>'
+                host: "user@host.com"
             }
         }
 
