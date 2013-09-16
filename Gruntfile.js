@@ -92,19 +92,23 @@ module.exports = function(grunt) {
         // deploy via rsync
         deploy: {
             options: {
-                args: ["--verbose"],
                 src: "./",
+                args: ["--verbose"],
                 exclude: ['.git*', 'node_modules', '.sass-cache', 'Gruntfile.js', 'package.json', '.DS_Store', 'README.md', 'config.rb', '.jshintrc'],
                 recursive: true,
                 syncDestIgnoreExcl: true
             },
             staging: {
-                dest: "~/path/to/theme",
-                host: "user@host.com"
+                options: {
+                    dest: "~/path/to/theme",
+                    host: "user@host.com"
+                }
             },
             production: {
-                dest: "~/path/to/theme",
-                host: "user@host.com"
+                options: {
+                    dest: "~/path/to/theme",
+                    host: "user@host.com"
+                }
             }
         }
 
