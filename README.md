@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 3.4.6
+Version: 3.4.7
 
 ## Contributors:
 
@@ -55,7 +55,11 @@ The theme includes deployments via [grunt-rsync](https://github.com/jedrichards/
 
 ### Changelog
 
-#### Version 3.4.5
+#### Version 3.4.7
+
+* fix navigation class spelling error
+
+#### Version 3.4.6
 
 * update grunt dependencies
 * update spacing in functions
