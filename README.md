@@ -18,7 +18,7 @@ Rename folder to your theme name, change the `assets/scss/style.scss` intro bloc
 
 - Compile `assets/scss/style.scss` to `style.css` (all paths defined in config.rb for Compass)
 - Compile `assets/scss/editor-style.scss` to `editor-style.css`
-- Concatenate and minify plugins in `assets/js/vender` and `assets/js/source/plugins.js` to `assets/js/plugins.min.js`
+- Concatenate and minify plugins in `assets/js/vendor` and `assets/js/source/plugins.js` to `assets/js/plugins.min.js`
 - Minify `assets/js/source/main.js` to `assets/js/main.min.js`
 - ??
 - Profit
