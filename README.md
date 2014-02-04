@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 3.4.8
+Version: 3.5.0
 
 ## Contributors:
 
@@ -54,6 +54,15 @@ The theme includes deployments via [grunt-rsync](https://github.com/jedrichards/
 ![dependencies](https://david-dm.org/mattbanks/WordPress-Starter-Theme.png)
 
 ### Changelog
+
+#### Version 3.5.0
+
+* rename assets/scss to assets/styles/source
+* move scss directory
+* process and livereload image in watch task
+* don't livereload html and php due to collisions and bugs in watch task
+* tweak imagemin processing
+* run all tasks on grunt run initially
 
 #### Version 3.4.8
 
