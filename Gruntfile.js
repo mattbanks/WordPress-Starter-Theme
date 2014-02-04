@@ -9,16 +9,20 @@ module.exports = function(grunt) {
         // watch for changes and trigger compass, jshint, uglify and livereload
         watch: {
             compass: {
-                files: ['assets/scss/**/*.{scss,sass}'],
+                files: ['assets/styles/source/**/*.{scss,sass}'],
                 tasks: ['compass']
             },
             js: {
                 files: '<%= jshint.all %>',
                 tasks: ['jshint', 'uglify']
             },
+            images: {
+                files: ['assets/images/**/*.{png,jpg,gif}'],
+                tasks: ['imagemin']
+            },
             livereload: {
                 options: { livereload: true },
-                files: ['style.css', 'assets/js/*.js', '*.html', '*.php', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
+                files: ['style.css', 'assets/js/*.js', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
             }
         },
 
@@ -78,12 +82,13 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     optimizationLevel: 7,
-                    progressive: true
+                    progressive: true,
+                    interlaced: true
                 },
                 files: [{
                     expand: true,
                     cwd: 'assets/images/',
-                    src: '**/*',
+                    src: ['**/*.{png,jpg,gif}'],
                     dest: 'assets/images/'
                 }]
             }
@@ -118,6 +123,6 @@ module.exports = function(grunt) {
     grunt.renameTask('rsync', 'deploy');
 
     // register task
-    grunt.registerTask('default', ['watch']);
+    grunt.registerTask('default', ['compass', 'uglify', 'imagemin', 'watch']);
 
 };
