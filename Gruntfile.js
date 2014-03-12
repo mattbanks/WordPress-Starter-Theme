@@ -6,11 +6,11 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
 
-        // watch for changes and trigger compass, jshint, uglify and livereload
+        // watch for changes and trigger sass, jshint, uglify and livereload
         watch: {
-            compass: {
+            sass: {
                 files: ['assets/styles/source/**/*.{scss,sass}'],
-                tasks: ['compass']
+                tasks: ['sass']
             },
             js: {
                 files: '<%= jshint.all %>',
@@ -26,13 +26,33 @@ module.exports = function(grunt) {
             }
         },
 
-        // compass and scss
-        compass: {
+        // sass
+        sass: {
             dist: {
                 options: {
-                    config: 'config.rb',
+                    sourcemap: true,
+                    style: 'expanded',
+                    compass: true,
                     force: true
+                },
+                files: {
+                    expand: true,
+                    cwd: 'assets/styles/source',
+                    src: ['*.scss'],
+                    dest: 'assets/styles/build',
+                    ext: '.css'
                 }
+            }
+        },
+
+        // css minify
+        cssmin: {
+            minify: {
+                expand: true,
+                cwd: 'assets/styles/build',
+                src: ['*.css', '!*.min.css'],
+                dest: '/',
+                ext: '.css'
             }
         },
 
