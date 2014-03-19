@@ -163,7 +163,7 @@ function mb_scripts() {
  * Remove Query Strings From Static Resources
  */
 function mb_remove_script_version( $src ){
-	$parts = explode( '?', $src );
+	$parts = explode( '?ver', $src );
 	return $parts[0];
 }
 
