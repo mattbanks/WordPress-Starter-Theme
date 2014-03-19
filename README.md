@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 3.5.1
+Version: 3.6.0
 
 ## Contributors:
 
@@ -8,16 +8,16 @@ Matt Banks ( [@mattbanks](http://twitter.com/mattbanks) / [kernelcreativemedia.c
 
 ## Summary
 
-WordPress Starter Theme for use as a starting template for building custom themes. Uses Compass/SCSS, HTML5 Boilerplate 4 with Modernizr and Normalize.css, and Grunt for all tasks. Tested with WordPress 3.8.1.
+WordPress Starter Theme for use as a starting template for building custom themes. Uses SCSS and AutoPrefixr, HTML5 Boilerplate 4 with Modernizr and Normalize.css, and Grunt for all tasks. Tested with WordPress 3.8.1.
 
 ## Usage
 
-The theme is setup to use [Grunt](http://gruntjs.com/) to compile Compass/SCSS, lint, concatenate and minify JavaScript (with source maps), optimize images, and [LiveReload](http://livereload.com/) the browser (with extension), with flexibility to add any additional tasks via the Gruntfile. Alternatively, you can use [CodeKit](http://incident57.com/codekit/) or whatever else you prefer to compile the SCSS and manage the JavaScript.
+The theme is setup to use [Grunt](http://gruntjs.com/) to compile SCSS (with source maps), run it through [AutoPrefixr](https://github.com/ai/autoprefixer), lint, concatenate and minify JavaScript (with source maps), optimize images, and [LiveReload](http://livereload.com/) the browser (with extension), with flexibility to add any additional tasks via the Gruntfile. Alternatively, you can use [CodeKit](http://incident57.com/codekit/) or whatever else you prefer to compile the SCSS and manage the JavaScript.
 
-Rename folder to your theme name, change the `assets/styles/source/style.scss` intro block to your theme information. Open the theme directory in terminal and run `npm install` to pull in all Grunt dependencies. Run `grunt` to execute tasks. Code as you will. If you have the LiveReload browser extension, it will reload after any SCSS or JS changes.
+Rename folder to your theme name, change the `style.scss` intro block to your theme information. Open the theme directory in terminal and run `npm install` to pull in all Grunt dependencies. Run `grunt` to execute tasks. Code as you will. If you have the LiveReload browser extension, it will reload after any SCSS or JS changes.
 
-- Compile `assets/styles/source/style.scss` to `style.css` (all paths defined in config.rb for Compass)
-- Compile `assets/styles/source/editor-style.scss` to `editor-style.css`
+- Compile `assets/styles/source/main.scss` to `assets/styles/build/main.min.css`
+- Compile `assets/styles/source/editor-style.scss` to `assets/styles/build/editor-style.min.css`
 - Concatenate and minify plugins in `assets/js/vendor` and `assets/js/source/plugins.js` to `assets/js/plugins.min.js`
 - Minify `assets/js/source/main.js` to `assets/js/main.min.js`
 - ??
@@ -35,12 +35,12 @@ The theme includes deployments via [grunt-rsync](https://github.com/jedrichards/
 
 ### Features
 
-1. Normalized stylesheet for cross-browser compatibility using Normalize.css version 2 (IE8+ only)
+1. Normalized stylesheet for cross-browser compatibility using Normalize.css version 3 (IE8+)
 2. Easy to customize
-3. Flexible grid from [Chris Coyier](https://twitter.com/chriscoyier)
-4. Media Queries for mobile and tablets ready to populate
+3. Flexible grid based on work from [Chris Coyier](https://twitter.com/chriscoyier)
+4. Media Queries can be nested in each selector using SASS
 5. Removed comments from pages
-6. Compass & SCSS with plenty of mixins ready to go
+6. SCSS with plenty of mixins ready to go
 7. Much much more
 
 ### Suggested Plugins
@@ -54,6 +54,21 @@ The theme includes deployments via [grunt-rsync](https://github.com/jedrichards/
 ![dependencies](https://david-dm.org/mattbanks/WordPress-Starter-Theme.png)
 
 ### Changelog
+
+#### Version 3.6.0
+
+* change from using compass to just using sass
+* setup autoprefixr and cssmin grunt tasks
+* use `style.css` for base stylesheet for theme detection
+* rename `style.scss` to `main.scss` and change css enqueuing to be from `assets/styles/build`
+* update to TGM Plugin Activation 2.4.0
+* update to latest HTML5 Boilerplate
+* move sharing styles out to its own scss partial
+* move page template styles out to their own partials
+* reformat and cleanup scss code
+* change microclearfix() mixin to clearfix()
+* run images through grunt imagemin
+* update grunt dependencies
 
 #### Version 3.5.1
 
