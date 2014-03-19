@@ -10,7 +10,7 @@ module.exports = function(grunt) {
         watch: {
             sass: {
                 files: ['assets/styles/source/**/*.{scss,sass}'],
-                tasks: ['sass']
+                tasks: ['sass', 'autoprefixer', 'cssmin']
             },
             js: {
                 files: '<%= jshint.all %>',
@@ -32,7 +32,6 @@ module.exports = function(grunt) {
                 options: {
                     sourcemap: true,
                     style: 'expanded',
-                    compass: true,
                     force: true
                 },
                 files: {
@@ -45,14 +44,26 @@ module.exports = function(grunt) {
             }
         },
 
+        // autoprefixer
+        autoprefixer: {
+            options: {
+                browsers: ['last 2 versions', 'ie 9', 'ios 6', 'android 4']
+            },
+            files: {
+                expand: true,
+                flatten: true,
+                src: 'assets/styles/build/*.css',
+            },
+        },
+
         // css minify
         cssmin: {
             minify: {
                 expand: true,
                 cwd: 'assets/styles/build',
                 src: ['*.css', '!*.min.css'],
-                dest: '/',
-                ext: '.css'
+                dest: 'assets/styles/build',
+                ext: '.min.css'
             }
         },
 
