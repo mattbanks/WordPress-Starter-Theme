@@ -2,7 +2,7 @@ $pad: 20px;
 
 .grid {
 	margin: 0 0 $pad 0;
-	@include microclearfix();
+	@include clearfix();
 }
 
 [class*='col-'] {

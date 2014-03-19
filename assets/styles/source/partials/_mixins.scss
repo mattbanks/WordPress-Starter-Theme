@@ -15,13 +15,19 @@
 }
 
 /*
- * Mixin for micro clearfix
- * @include microclearfix;
+ * Mixin for clearfix
+ * @include clearfix;
 */
-@mixin microclearfix {
-	&:before, &:after { content: ""; display: table; }
-	&:after { clear: both; }
-	*zoom: 1;
+@mixin clearfix {
+	&:before,
+	&:after {
+	    content: " "; /* 1 */
+	    display: table; /* 2 */
+	}
+
+	&:after {
+	    clear: both;
+	}
 }
 
 /*
