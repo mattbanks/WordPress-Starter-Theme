@@ -22,7 +22,7 @@ module.exports = function(grunt) {
             },
             livereload: {
                 options: { livereload: true },
-                files: ['style.css', 'assets/js/*.js', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
+                files: ['assets/styles/build/*.css', 'assets/js/*.js', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
             }
         },
 
@@ -35,10 +35,10 @@ module.exports = function(grunt) {
                     force: true
                 },
                 files: {
-                    expand: true,
+                    'assets/styles/tmp/main.css': 'assets/styles/source/main.scss',
                     cwd: 'assets/styles/source',
                     src: ['*.scss'],
-                    dest: 'assets/styles/build',
+                    'assets/styles/tmp/editor-style.css': 'assets/styles/source/editor-style.scss'
                     ext: '.css'
                 }
             }
@@ -47,20 +47,24 @@ module.exports = function(grunt) {
         // autoprefixer
         autoprefixer: {
             options: {
-                browsers: ['last 2 versions', 'ie 9', 'ios 6', 'android 4']
+                browsers: ['last 2 versions', 'ie 9', 'ios 6', 'android 4'],
             },
             files: {
                 expand: true,
                 flatten: true,
-                src: 'assets/styles/build/*.css',
+                src: 'assets/styles/tmp/*.css',
+                dest: 'assets/styles/tmp'
             },
         },
 
         // css minify
         cssmin: {
+            options: {
+                keepSpecialComments: 0
+            },
             minify: {
                 expand: true,
-                cwd: 'assets/styles/build',
+                cwd: 'assets/styles/tmp',
                 src: ['*.css', '!*.min.css'],
                 dest: 'assets/styles/build',
                 ext: '.min.css'
@@ -154,6 +158,6 @@ module.exports = function(grunt) {
     grunt.renameTask('rsync', 'deploy');
 
     // register task
-    grunt.registerTask('default', ['compass', 'uglify', 'imagemin', 'watch']);
+    grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify', 'imagemin', 'watch']);
 
 };
