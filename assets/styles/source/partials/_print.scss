@@ -28,7 +28,6 @@
      * Don't show links for images, or javascript/internal links
      */
 
-    .ir a:after,
     a[href^="javascript:"]:after,
     a[href^="#"]:after {
         content: "";
@@ -51,10 +50,6 @@
 
     img {
         max-width: 100% !important;
-    }
-
-    @page {
-        margin: 0.5cm;
     }
 
     p,
