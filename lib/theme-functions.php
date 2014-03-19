@@ -116,7 +116,7 @@ function mb_custom_menu_order( $menu_ord ) {
  * Hide Admin Areas that are not used
  */
 function mb_remove_menu_pages() {
-	// remove_menu_page('link-manager.php');
+	// remove_menu_page( 'link-manager.php' );
 }
 
 /**
@@ -124,8 +124,8 @@ function mb_remove_menu_pages() {
  */
 function mb_imagelink_setup() {
 	$image_set = get_option( 'image_default_link_type' );
-	if ($image_set !== 'none') {
-		update_option('image_default_link_type', 'none');
+	if ( $image_set !== 'none' ) {
+		update_option( 'image_default_link_type', 'none' );
 	}
 }
 
@@ -146,7 +146,8 @@ Frontend
  */
 function mb_scripts() {
 	// CSS first
-	wp_enqueue_style( 'mb_style', get_stylesheet_directory_uri().'/style.css', null, '1.0', 'all' );
+	wp_enqueue_style( 'mb_style', get_stylesheet_directory_uri().'/assets/styles/build/main.min.css', null, '1.0', 'all' );
+
 	// JavaScript
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
