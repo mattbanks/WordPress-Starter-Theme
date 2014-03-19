@@ -9,16 +9,6 @@ a:hover {
 	color: $linkHoverColor;
 }
 
-::-moz-selection {
-    background: $selectionColor;
-    text-shadow: none;
-}
-
-::selection {
-    background: $selectionColor;
-    text-shadow: none;
-}
-
 /* HEADINGS / TYPOGRAPHY */
 h1, h2, h3, h4 {
 	font-weight: normal;
@@ -50,13 +40,3 @@ aside { }
 
 /* FOOTER */
 footer { }
-
-/****************************************
-PAGE TEMPLATES
-*****************************************/
-
-/* Home Page */
-.home { }
-
-/* Blog Page */
-.blog { }
