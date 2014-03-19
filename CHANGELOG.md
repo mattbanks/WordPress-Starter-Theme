@@ -2,6 +2,10 @@
 
 ## Version 3.6.0
 
+* fix gruntfile paths
+
+## Version 3.6.0
+
 * change from using compass to just using sass
 * setup autoprefixr and cssmin grunt tasks
 * use `style.css` for base stylesheet for theme detection
