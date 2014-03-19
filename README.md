@@ -2,7 +2,7 @@
 
 Version: 3.6.0
 
-## Contributors:
+## Author:
 
 Matt Banks ( [@mattbanks](http://twitter.com/mattbanks) / [kernelcreativemedia.com](http://www.kernelcreativemedia.com) / [mattbanks.me](http://www.mattbanks.me) )
 
@@ -53,6 +53,14 @@ The theme includes deployments via [grunt-rsync](https://github.com/jedrichards/
 
 ![dependencies](https://david-dm.org/mattbanks/WordPress-Starter-Theme.png)
 
+### Contributing:
+
+Anyone and everyone is welcome to contribute! Check out the [Contributing Guidelines](CONTRIBUTING.md).
+
+### Contributors:
+
+- [ddropik](https://github.com/ddropik)
+
 ### Credits
 
 Without these projects, this WordPress Starter Theme wouldn't be where it is today.
@@ -60,7 +68,7 @@ Without these projects, this WordPress Starter Theme wouldn't be where it is tod
 * [HTML5 Boilerplate](http://html5boilerplate.com)
 * [Normalize.css](http://necolas.github.com/normalize.css)
 * [SASS / SCSS](http://sass-lang.com/)
-* [Compass](http://compass-style.org)
+* [AutoPrefixr](https://github.com/ai/autoprefixer)
 * [Don't Overthink It Grids](css-tricks.com/dont-overthink-it-grids/)
 * [Underscores Theme](https://github.com/Automattic/_s)
 * [Grunt](http://gruntjs.com/)
