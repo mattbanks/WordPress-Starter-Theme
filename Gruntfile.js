@@ -32,14 +32,10 @@ module.exports = function(grunt) {
                 options: {
                     sourcemap: true,
                     style: 'expanded',
-                    force: true
                 },
                 files: {
                     'assets/styles/tmp/main.css': 'assets/styles/source/main.scss',
-                    cwd: 'assets/styles/source',
-                    src: ['*.scss'],
                     'assets/styles/tmp/editor-style.css': 'assets/styles/source/editor-style.scss'
-                    ext: '.css'
                 }
             }
         },
@@ -48,6 +44,7 @@ module.exports = function(grunt) {
         autoprefixer: {
             options: {
                 browsers: ['last 2 versions', 'ie 9', 'ios 6', 'android 4'],
+                map: true
             },
             files: {
                 expand: true,
