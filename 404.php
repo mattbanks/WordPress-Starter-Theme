@@ -1,22 +1,29 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying 404 pages (Not Found).
+ *
+ * @package _mbbasetheme
+ */
 
-	<section id="main" role="main">
+get_header(); ?>
 
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', '_mbbasetheme' ); ?></h1>
-			</header><!-- .page-header -->
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
 
-			<div class="page-content">
-				<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', '_mbbasetheme' ); ?></p>
+			<section class="error-404 not-found">
+				<header class="page-header">
+					<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', '_mbbasetheme' ); ?></h1>
+				</header><!-- .page-header -->
 
-				<?php get_search_form(); ?>
+				<div class="page-content">
+					<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', '_mbbasetheme' ); ?></p>
 
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
+					<?php get_search_form(); ?>
 
-	</section> <!-- /#main -->
+				</div><!-- .page-content -->
+			</section><!-- .error-404 -->
 
-<?php get_sidebar(); ?>
+		</main><!-- #main -->
+	</div><!-- #primary -->
 
 <?php get_footer(); ?>
