@@ -1,5 +1,16 @@
 # Changelog
 
+## Version 4.0.0
+
+* update to latest [_s](https://github.com/Automattic/_s) code base
+* move template partials to root of theme folder
+* reorganize scss with new, more logical partials
+* update to latest [TGM Plugin Activation](https://github.com/thomasgriffin/TGM-Plugin-Activation) code
+* update to [normalize 3.0.1](http://necolas.github.com/normalize.css)
+* remove imagemin from grunt watch tasks (currently causing issues)
+* change back to putting `style.css` and `editor-style.css` in the root of theme folder from scss compilation
+* general cleanup
+
 ## Version 3.6.0
 
 * fix gruntfile paths
