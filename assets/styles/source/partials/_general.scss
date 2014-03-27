@@ -24,10 +24,10 @@ body { }
 
 a,
 a:visited {
-	color: $linkColor;
+	color: $red;
 }
 a:hover {
-	color: $linkHoverColor;
+	color: $blue;
 }
 
 
@@ -64,16 +64,6 @@ blockquote {
 
 address {
 	margin: 0 0 1.5em;
-}
-
-
-/* ==========================================================================
-   Structure
-   ========================================================================== */
-
-#page {
-	max-width: $pageWidth;
-	margin: 20px auto;
 }
 
 
