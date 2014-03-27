@@ -87,7 +87,7 @@
 ## Version 3.1
 
 * create `templates` folder and include example portfolio page template
-* create `templates/partials` and move all template parts there for cleaner directory structure, update all `get_template_part()` calls to use new path
+* create `templates` and move all template parts there for cleaner directory structure, update all `get_template_part()` calls to use new path
 
 ## Version 3.0
 

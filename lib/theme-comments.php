@@ -5,7 +5,6 @@
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
  *
- * @since _mbbasetheme 2.6
  */
 if ( ! function_exists( '_mbbasetheme_comment' ) ) :
 function _mbbasetheme_comment( $comment, $args, $depth ) {

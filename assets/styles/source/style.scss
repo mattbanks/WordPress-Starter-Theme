@@ -1,0 +1,44 @@
+/*!
+Theme Name: WordPress Starter Theme
+Theme URI: http://www.THEME.com
+Author: Matt Banks
+Author URI: http://mattbanks.me
+Description: WordPress Starter Theme for use as a starting template for building custom themes.
+Version: 1.0
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: _mbbasetheme
+Domain Path: /languages/
+Tags:
+
+ _mbbasetheme is based on Underscores http://underscores.me/, (C) 2012-2014 Automattic, Inc.
+
+*/
+
+// Reset, Variables, Mixins, Etc
+// DO NOT EDIT ORDER OF FILES
+@import "partials/mixins";
+@import "partials/variables";
+@import "partials/normalize";
+
+// Globals
+@import "partials/h5bp-global";
+@import "partials/general";
+@import "partials/grid";
+
+// Menus, Page and Post styles
+@import "partials/menus";
+@import "partials/page-post";
+
+// Page Templates
+@import "partials/page-home";
+@import "partials/page-blog";
+
+// Widgets, Search, Comments, Forms, Sharing
+@import "partials/widgets";
+@import "partials/comments";
+@import "partials/forms";
+
+// Helper Classes, Print, Etc
+@import "partials/helpers";
+@import "partials/print";

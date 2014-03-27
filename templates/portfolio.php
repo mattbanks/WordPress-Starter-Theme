@@ -1,21 +1,32 @@
 <?php
-/*
-Template Name: Portfolio Page
-*/
-?>
+/**
+ * Template Name: Portfolio Page
+ *
+ * Displays content for portfolio page layouts
+ *
+ * @package _mbbasetheme
+ */
 
-<?php get_header(); ?>
+get_header(); ?>
 
-	<section id="main" role="main">
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
 
-		<?php while ( have_posts() ) : the_post(); ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'templates/partials/content', 'page' ); ?>
+				<?php get_template_part( 'content', 'page' ); ?>
 
-		<?php endwhile; ?>
+				<?php
+					// If comments are open or we have at least one comment, load up the comment template
+					if ( comments_open() || '0' != get_comments_number() ) :
+						comments_template();
+					endif;
+				?>
 
-	</section> <!-- /#main -->
+			<?php endwhile; // end of the loop. ?>
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
 
 <?php get_sidebar(); ?>
-
 <?php get_footer(); ?>

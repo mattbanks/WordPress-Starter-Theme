@@ -1,3 +1,17 @@
-/* WIDGETS */
+/* ==========================================================================
+   Widgets
+   ========================================================================== */
 
-.widget { }
+.widget {
+	margin: 0 0 1.5em;
+}
+
+/* Make sure select elements fit in widgets */
+.widget select {
+	max-width: 100%;
+}
+
+/* Search widget */
+.widget_search .search-submit {
+	display: none;
+}

@@ -1,41 +1,38 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying Search Results pages.
+ *
+ * @package _mbbasetheme
+ */
 
-	<section id="main" role="main">
+get_header(); ?>
+
+	<section id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
-			<h1>Search Results</h1>
+			<header class="page-header">
+				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', '_mbbasetheme' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+			</header><!-- .page-header -->
 
-			<?php get_template_part( 'templates/partials/inc', 'nav' ); ?>
-
+			<?php /* Start the Loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-
-					<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-
-					<?php get_template_part( 'templates/partials/inc', 'meta' ); ?>
-
-					<div class="entry">
-
-						<?php the_excerpt(); ?>
-
-					</div>
-
-				</article>
+				<?php get_template_part( 'content', 'search' ); ?>
 
 			<?php endwhile; ?>
 
-			<?php get_template_part( 'templates/partials/inc', 'nav' ); ?>
+			<?php _mbbasetheme_paging_nav(); ?>
 
 		<?php else : ?>
 
-			<h1>No posts found.</h1>
+			<?php get_template_part( 'content', 'none' ); ?>
 
 		<?php endif; ?>
 
-	</section> <!-- /#main -->
+		</main><!-- #main -->
+	</section><!-- #primary -->
 
 <?php get_sidebar(); ?>
-
 <?php get_footer(); ?>

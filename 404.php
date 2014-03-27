@@ -2,19 +2,18 @@
 
 	<section id="main" role="main">
 
-		<article id="post-0" class="post error404 not-found">
+		<section class="error-404 not-found">
+			<header class="page-header">
+				<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', '_mbbasetheme' ); ?></h1>
+			</header><!-- .page-header -->
 
-			<h1>Oops! That page can&rsquo;t be found.</h1>
-
-			<div class="entry">
-
-				<p>It looks like nothing was found at this location. Maybe try heading back to the <a href="<?php echo home_url('/'); ?>">home page</a> or a search?</p>
+			<div class="page-content">
+				<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', '_mbbasetheme' ); ?></p>
 
 				<?php get_search_form(); ?>
 
-			</div>
-
-		</article>
+			</div><!-- .page-content -->
+		</section><!-- .error-404 -->
 
 	</section> <!-- /#main -->
 

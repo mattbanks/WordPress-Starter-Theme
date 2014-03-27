@@ -16,13 +16,9 @@ module.exports = function(grunt) {
                 files: '<%= jshint.all %>',
                 tasks: ['jshint', 'uglify']
             },
-            images: {
-                files: ['assets/images/**/*.{png,jpg,gif}'],
-                tasks: ['imagemin']
-            },
             livereload: {
                 options: { livereload: true },
-                files: ['assets/styles/build/*.css', 'assets/js/*.js', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
+                files: ['style.css', 'assets/js/*.js', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
             }
         },
 
@@ -34,8 +30,8 @@ module.exports = function(grunt) {
                     style: 'expanded',
                 },
                 files: {
-                    'assets/styles/tmp/main.css': 'assets/styles/source/main.scss',
-                    'assets/styles/tmp/editor-style.css': 'assets/styles/source/editor-style.scss'
+                    'assets/styles/build/style.css': 'assets/styles/source/style.scss',
+                    'assets/styles/build/editor-style.css': 'assets/styles/source/editor-style.scss'
                 }
             }
         },
@@ -49,22 +45,21 @@ module.exports = function(grunt) {
             files: {
                 expand: true,
                 flatten: true,
-                src: 'assets/styles/tmp/*.css',
-                dest: 'assets/styles/tmp'
+                src: 'assets/styles/build/*.css',
+                dest: 'assets/styles/build'
             },
         },
 
         // css minify
         cssmin: {
             options: {
-                keepSpecialComments: 0
+                keepSpecialComments: 1
             },
             minify: {
                 expand: true,
-                cwd: 'assets/styles/tmp',
+                cwd: 'assets/styles/build',
                 src: ['*.css', '!*.min.css'],
-                dest: 'assets/styles/build',
-                ext: '.min.css'
+                ext: '.css'
             }
         },
 
@@ -91,6 +86,8 @@ module.exports = function(grunt) {
                 files: {
                     'assets/js/plugins.min.js': [
                         'assets/js/source/plugins.js',
+                        'assets/js/vendor/navigation.js',
+                        'assets/js/vendor/skip-link-focus-fix.js',
                         // 'assets/js/vendor/yourplugin/yourplugin.js',
                     ]
                 }
@@ -136,7 +133,7 @@ module.exports = function(grunt) {
                 syncDestIgnoreExcl: true
             },
             staging: {
-                options: {
+                 options: {
                     dest: "~/path/to/theme",
                     host: "user@host.com"
                 }
@@ -155,6 +152,6 @@ module.exports = function(grunt) {
     grunt.renameTask('rsync', 'deploy');
 
     // register task
-    grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify', 'imagemin', 'watch']);
+    grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify', 'watch']);
 
 };

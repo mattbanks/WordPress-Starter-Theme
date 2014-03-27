@@ -6,6 +6,8 @@ Theme Helpers
 
 /**
  * Add capabilities for a custom post type
+ *
+ * @return void
  */
 function mb_add_capabilities( $posttype ) {
 	// gets the author role

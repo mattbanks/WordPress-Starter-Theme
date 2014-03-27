@@ -1,26 +1,10 @@
 <?php
-
-/****************************************
-Backend Functions
-*****************************************/
-
 /**
- * Customize Contact Methods
- * @since 1.0.0
+ * _mbbasetheme theme functions definted in /lib/init.php
  *
- * @author Bill Erickson
- * @link http://sillybean.net/2010/01/creating-a-user-directory-part-1-changing-user-contact-fields/
- *
- * @param array $contactmethods
- * @return array
+ * @package _mbbasetheme
  */
-function mb_contactmethods( $contactmethods ) {
-	unset( $contactmethods['aim'] );
-	unset( $contactmethods['yim'] );
-	unset( $contactmethods['jabber'] );
 
-	return $contactmethods;
-}
 
 /**
  * Register Widget Areas
@@ -28,49 +12,13 @@ function mb_contactmethods( $contactmethods ) {
 function mb_widgets_init() {
 	// Main Sidebar
 	register_sidebar( array(
-		'name'          => __( 'Main Sidebar', 'mb' ),
-		'id'            => 'main-sidebar',
-		'description'   => __( 'Widgets for Main Sidebar.', 'mb' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h4 class="widget-title">',
-		'after_title'   => '</h4>'
-	));
-
-	// Footer
-	register_sidebar( array(
-		'name'          => __( 'Footer', 'mb' ),
-		'id'            => 'footer-widgets',
-		'description'   => __( 'Widgets for Footer.', 'mb' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h4 class="widget-title">',
-		'after_title'   => '</h4>'
-	));
-}
-
-/**
- * Don't Update Theme
- * @since 1.0.0
- *
- * If there is a theme in the repo with the same name,
- * this prevents WP from prompting an update.
- *
- * @author Mark Jaquith
- * @link http://markjaquith.wordpress.com/2009/12/14/excluding-your-plugin-or-theme-from-update-checks/
- *
- * @param array $r, request arguments
- * @param string $url, request url
- * @return array request arguments
- */
-function mb_dont_update_theme( $r, $url ) {
-	if ( 0 !== strpos( $url, 'http://api.wordpress.org/themes/update-check' ) )
-		return $r; // Not a theme update request. Bail immediately.
-	$themes = unserialize( $r['body']['themes'] );
-	unset( $themes[ get_option( 'template' ) ] );
-	unset( $themes[ get_option( 'stylesheet' ) ] );
-	$r['body']['themes'] = serialize( $themes );
-	return $r;
+		'name'          => __( 'Sidebar', '_mbbasetheme' ),
+		'id'            => 'sidebar-1',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
 }
 
 /**
@@ -137,21 +85,16 @@ function mb_unhide_kitchensink( $args ) {
 	return $args;
 }
 
-/****************************************
-Frontend
-*****************************************/
-
 /**
  * Enqueue scripts
  */
 function mb_scripts() {
-	// CSS first
-	wp_enqueue_style( 'mb_style', get_stylesheet_directory_uri().'/assets/styles/build/main.min.css', null, '1.0', 'all' );
+	wp_enqueue_style( 'mb-style', get_stylesheet_uri() );
 
-	// JavaScript
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
 	if ( !is_admin() ) {
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.6.2.min.js', false, NULL );
