@@ -25,7 +25,11 @@ Tags:
 @import "partials/h5bp-global";
 @import "partials/general";
 @import "partials/grid";
+
+// Layout
 @import "partials/layout";
+@import "partials/header";
+@import "partials/footer";
 
 // Menus, Page and Post styles
 @import "partials/menus";
