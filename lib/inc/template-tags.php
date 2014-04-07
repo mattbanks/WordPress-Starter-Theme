@@ -10,8 +10,6 @@
 if ( ! function_exists( '_mbbasetheme_paging_nav' ) ) :
 /**
  * Display navigation to next/previous set of posts when applicable.
- *
- * @return void
  */
 function _mbbasetheme_paging_nav() {
 	// Don't print empty markup if there's only one page.
@@ -40,8 +38,6 @@ endif;
 if ( ! function_exists( '_mbbasetheme_post_nav' ) ) :
 /**
  * Display navigation to next/previous post when applicable.
- *
- * @return void
  */
 function _mbbasetheme_post_nav() {
 	// Don't print empty markup if there's nowhere to navigate.
@@ -97,6 +93,8 @@ endif;
 
 /**
  * Returns true if a blog has more than 1 category.
+ *
+ * @return bool
  */
 function _mbbasetheme_categorized_blog() {
 	if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
@@ -104,7 +102,7 @@ function _mbbasetheme_categorized_blog() {
 		$all_the_cool_cats = get_categories( array(
 			'fields'     => 'ids',
 			'hide_empty' => 1,
-			
+
 			// We only need to know if there is more than one category.
 			'number'     => 2,
 		) );
