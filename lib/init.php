@@ -86,10 +86,6 @@ function _mbbasetheme_setup() {
 	// Function location: /lib/theme-functions.php
 	add_action( 'admin_init', 'mb_imagelink_setup', 10 );
 
-	// Show Kitchen Sink in WYSIWYG Editor
-	// Function location: /lib/theme-functions.php
-	add_filter( 'tiny_mce_before_init', 'mb_unhide_kitchensink' );
-
 	// Enable support for HTML5 markup.
 	add_theme_support( 'html5', array(
 		'comment-list',

@@ -78,14 +78,6 @@ function mb_imagelink_setup() {
 }
 
 /**
- * Show Kitchen Sink in WYSIWYG Editor
- */
-function mb_unhide_kitchensink( $args ) {
-	$args['wordpress_adv_hidden'] = false;
-	return $args;
-}
-
-/**
  * Enqueue scripts
  */
 function mb_scripts() {
