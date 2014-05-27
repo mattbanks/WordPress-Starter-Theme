@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 4.1.1
+
+* update grunt packages
+
 ## Version 4.1.0
 
 * update to latest [_s](https://github.com/Automattic/_s) code base
