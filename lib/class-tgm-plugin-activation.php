@@ -63,6 +63,15 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
         public $plugins = array();
 
         /**
+         * Name of the unique ID to hash notices.
+         *
+         * @since 2.4.0
+         *
+         * @var string
+         */
+        public $id = 'tgmpa';
+
+        /**
          * Name of the querystring argument for the admin page.
          *
          * @since 1.0.0
@@ -157,29 +166,6 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 
             self::$instance = $this;
 
-            $this->strings = array(
-                'page_title'                     => __( 'Install Required Plugins', 'tgmpa' ),
-                'menu_title'                     => __( 'Install Plugins', 'tgmpa' ),
-                'installing'                     => __( 'Installing Plugin: %s', 'tgmpa' ),
-                'oops'                           => __( 'Something went wrong.', 'tgmpa' ),
-                'notice_can_install_required'    => _n_noop( 'This theme requires the following plugin: %1$s.', 'This theme requires the following plugins: %1$s.', 'tgmpa' ),
-                'notice_can_install_recommended' => _n_noop( 'This theme recommends the following plugin: %1$s.', 'This theme recommends the following plugins: %1$s.', 'tgmpa' ),
-                'notice_cannot_install'          => _n_noop( 'Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed.', 'Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed.', 'tgmpa' ),
-                'notice_can_activate_required'   => _n_noop( 'The following required plugin is currently inactive: %1$s.', 'The following required plugins are currently inactive: %1$s.', 'tgmpa' ),
-                'notice_can_activate_recommended'=> _n_noop( 'The following recommended plugin is currently inactive: %1$s.', 'The following recommended plugins are currently inactive: %1$s.', 'tgmpa' ),
-                'notice_cannot_activate'         => _n_noop( 'Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated.', 'Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated.', 'tgmpa' ),
-                'notice_ask_to_update'           => _n_noop( 'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.', 'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.', 'tgmpa' ),
-                'notice_cannot_update'           => _n_noop( 'Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated.', 'Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated.', 'tgmpa' ),
-                'install_link'                   => _n_noop( 'Begin installing plugin', 'Begin installing plugins', 'tgmpa' ),
-                'activate_link'                  => _n_noop( 'Begin activating plugin', 'Begin activating plugins', 'tgmpa' ),
-                'return'                         => __( 'Return to Required Plugins Installer', 'tgmpa' ),
-                'dashboard'                      => __( 'Return to the dashboard', 'tgmpa' ),
-                'plugin_activated'               => __( 'Plugin activated successfully.', 'tgmpa' ),
-                'activated_successfully'         => __( 'The following plugin was activated successfully:', 'tgmpa' ),
-                'complete'                       => __( 'All plugins installed and activated successfully. %1$s', 'tgmpa' ),
-                'dismiss'                        => __( 'Dismiss this notice', 'tgmpa' ),
-            );
-
             // Set the current WordPress version.
             global $wp_version;
             $this->wp_version = $wp_version;
@@ -204,6 +190,30 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
          * @see TGM_Plugin_Activation::styles()
          */
         public function init() {
+
+            // Load class strings.
+            $this->strings = array(
+                'page_title'                     => __( 'Install Required Plugins', 'tgmpa' ),
+                'menu_title'                     => __( 'Install Plugins', 'tgmpa' ),
+                'installing'                     => __( 'Installing Plugin: %s', 'tgmpa' ),
+                'oops'                           => __( 'Something went wrong.', 'tgmpa' ),
+                'notice_can_install_required'    => _n_noop( 'This theme requires the following plugin: %1$s.', 'This theme requires the following plugins: %1$s.', 'tgmpa' ),
+                'notice_can_install_recommended' => _n_noop( 'This theme recommends the following plugin: %1$s.', 'This theme recommends the following plugins: %1$s.', 'tgmpa' ),
+                'notice_cannot_install'          => _n_noop( 'Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed.', 'Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed.', 'tgmpa' ),
+                'notice_can_activate_required'   => _n_noop( 'The following required plugin is currently inactive: %1$s.', 'The following required plugins are currently inactive: %1$s.', 'tgmpa' ),
+                'notice_can_activate_recommended'=> _n_noop( 'The following recommended plugin is currently inactive: %1$s.', 'The following recommended plugins are currently inactive: %1$s.', 'tgmpa' ),
+                'notice_cannot_activate'         => _n_noop( 'Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated.', 'Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated.', 'tgmpa' ),
+                'notice_ask_to_update'           => _n_noop( 'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.', 'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.', 'tgmpa' ),
+                'notice_cannot_update'           => _n_noop( 'Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated.', 'Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated.', 'tgmpa' ),
+                'install_link'                   => _n_noop( 'Begin installing plugin', 'Begin installing plugins', 'tgmpa' ),
+                'activate_link'                  => _n_noop( 'Begin activating plugin', 'Begin activating plugins', 'tgmpa' ),
+                'return'                         => __( 'Return to Required Plugins Installer', 'tgmpa' ),
+                'dashboard'                      => __( 'Return to the dashboard', 'tgmpa' ),
+                'plugin_activated'               => __( 'Plugin activated successfully.', 'tgmpa' ),
+                'activated_successfully'         => __( 'The following plugin was activated successfully:', 'tgmpa' ),
+                'complete'                       => __( 'All plugins installed and activated successfully. %1$s', 'tgmpa' ),
+                'dismiss'                        => __( 'Dismiss this notice', 'tgmpa' ),
+            );
 
             do_action( 'tgmpa_register' );
             // After this point, the plugins should be registered and the configuration set.
@@ -311,7 +321,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
          */
         public function thickbox() {
 
-            if ( ! get_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice', true ) ) {
+            if ( ! get_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice_' . $this->id, true ) ) {
                 add_thickbox();
             }
 
@@ -559,7 +569,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
                 else {
                     // Make sure message doesn't display again if bulk activation is performed immediately after a single activation.
                     if ( ! isset( $_POST['action'] ) ) {
-                        $msg = $this->strings['activated_successfully'] . ' <strong>' . $plugin['name'] . '</strong>';
+                        $msg = $this->strings['activated_successfully'] . ' <strong>' . $plugin['name'] . '.</strong>';
                         echo '<div id="message" class="updated"><p>' . $msg . '</p></div>';
                     }
                 }
@@ -591,7 +601,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
             }
 
             // Return early if the nag message has been dismissed.
-            if ( get_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice', true ) ) {
+            if ( get_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice_' . $this->id, true ) ) {
                 return;
             }
 
@@ -767,7 +777,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
         public function dismiss() {
 
             if ( isset( $_GET['tgmpa-dismiss'] ) ) {
-                update_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice', 1 );
+                update_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice_' . $this->id, 1 );
             }
 
         }
@@ -807,7 +817,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
          */
         public function config( $config ) {
 
-            $keys = array( 'default_path', 'has_notices', 'dismissable', 'dismiss_msg', 'menu', 'is_automatic', 'message', 'strings' );
+            $keys = array( 'id', 'default_path', 'has_notices', 'dismissable', 'dismiss_msg', 'menu', 'is_automatic', 'message', 'strings' );
 
             foreach ( $keys as $key ) {
                 if ( isset( $config[$key] ) ) {
@@ -942,7 +952,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
          */
         public function update_dismiss() {
 
-            delete_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice' );
+            delete_user_meta( get_current_user_id(), 'tgmpa_dismissed_notice_' . $this->id );
 
         }
 
@@ -985,7 +995,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
          * is set to true.
          *
          * This allows theme authors to specify certain plugins that must be
-         * deactived upon switching from the current theme to another.
+         * deactivated upon switching from the current theme to another.
          *
          * Please take special care when using this parameter as it has the
          * potential to be harmful if not used correctly.
@@ -998,7 +1008,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
             $this->populate_file_path();
 
             foreach ( $this->plugins as $plugin ) {
-                // Only proceed forward if the paramter is set to true and plugin is active.
+                // Only proceed forward if the parameter is set to true and plugin is active.
                 if ( isset( $plugin['force_deactivation'] ) && $plugin['force_deactivation'] && is_plugin_active( $plugin['file_path'] ) ) {
                     deactivate_plugins( $plugin['file_path'] );
                 }
@@ -1090,13 +1100,8 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
          * and stores it in the global object TGM_Plugin_Activation::$instance.
          *
          * @since 2.2.0
-         *
-         * @global unknown $status
-         * @global string $page
          */
         public function __construct() {
-
-            global $status, $page;
 
             parent::__construct(
                 array(
@@ -1256,12 +1261,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
          */
         public function column_default( $item, $column_name ) {
 
-            switch ( $column_name ) {
-                case 'source':
-                case 'type':
-                case 'status':
-                    return $item[$column_name];
-            }
+            return $item[$column_name];
 
         }
 
@@ -1505,6 +1505,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 
                 // No need to proceed further if we have no plugins to install.
                 if ( empty( $plugin_installs ) ) {
+                    echo '<div id="message" class="error"><p>' . __( 'No plugins are available to be installed at this time.', 'tgmpa' ) . '</p></div>';
                     return false;
                 }
 
@@ -1612,7 +1613,8 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 
                 // Return early if there are no plugins to activate.
                 if ( empty( $plugins_to_activate ) ) {
-                    return;
+                    echo '<div id="message" class="error"><p>' . __( 'No plugins are available to be activated at this time.', 'tgmpa' ) . '</p></div>';
+                    return false;
                 }
 
                 $plugins      = array();
@@ -1633,7 +1635,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
                 if ( is_wp_error( $activate ) ) {
                     echo '<div id="message" class="error"><p>' . $activate->get_error_message() . '</p></div>';
                 } else {
-                    printf( '<div id="message" class="updated"><p>%1$s %2$s</p></div>', _n( 'The following plugin was activated successfully:', 'The following plugins were activated successfully:', $count, 'tgmpa' ), $imploded );
+                    printf( '<div id="message" class="updated"><p>%1$s %2$s.</p></div>', _n( 'The following plugin was activated successfully:', 'The following plugins were activated successfully:', $count, 'tgmpa' ), $imploded );
                 }
 
                 // Update recently activated plugins option.
@@ -1648,6 +1650,8 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
                 update_option( 'recently_activated', $recent );
 
                 unset( $_POST ); // Reset the $_POST variable in case user wants to perform one action after another.
+
+                return true;
             }
         }
 
@@ -1658,7 +1662,6 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
          */
         public function prepare_items() {
 
-            $per_page              = 100; // Set it high so we shouldn't have to worry about pagination.
             $columns               = $this->get_columns(); // Get all necessary column information.
             $hidden                = array(); // No columns to hide, but we must set as an array.
             $sortable              = array(); // No reason to make sortable columns.
@@ -1685,512 +1688,517 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
  *
  * @since 2.2.0
  */
-if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET['page'] ) && TGM_Plugin_Activation::$instance->menu === $_GET['page'] ) ) {
-    require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+add_action( 'admin_init', 'tgmpa_load_bulk_installer' );
+function tgmpa_load_bulk_installer() {
 
-    if ( ! class_exists( 'TGM_Bulk_Installer' ) ) {
-        /**
-         * Installer class to handle bulk plugin installations.
-         *
-         * Extends WP_Upgrader and customizes to suit the installation of multiple
-         * plugins.
-         *
-         * @since 2.2.0
-         *
-         * @package TGM-Plugin-Activation
-         * @author  Thomas Griffin <thomasgriffinmedia.com>
-         * @author  Gary Jones <gamajo.com>
-         */
-        class TGM_Bulk_Installer extends WP_Upgrader {
+    if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET['page'] ) && TGM_Plugin_Activation::$instance->menu === $_GET['page'] ) ) {
+        require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 
+        if ( ! class_exists( 'TGM_Bulk_Installer' ) ) {
             /**
-             * Holds result of bulk plugin installation.
+             * Installer class to handle bulk plugin installations.
+             *
+             * Extends WP_Upgrader and customizes to suit the installation of multiple
+             * plugins.
              *
              * @since 2.2.0
              *
-             * @var string
+             * @package TGM-Plugin-Activation
+             * @author  Thomas Griffin <thomasgriffinmedia.com>
+             * @author  Gary Jones <gamajo.com>
              */
-            public $result;
+            class TGM_Bulk_Installer extends WP_Upgrader {
 
-            /**
-             * Flag to check if bulk installation is occurring or not.
-             *
-             * @since 2.2.0
-             *
-             * @var boolean
-             */
-            public $bulk = false;
+                /**
+                 * Holds result of bulk plugin installation.
+                 *
+                 * @since 2.2.0
+                 *
+                 * @var string
+                 */
+                public $result;
 
-            /**
-             * Processes the bulk installation of plugins.
-             *
-             * @since 2.2.0
-             *
-             * @param array $packages The plugin sources needed for installation.
-             * @return string|boolean Install confirmation messages on success, false on failure.
-             */
-            public function bulk_install( $packages ) {
+                /**
+                 * Flag to check if bulk installation is occurring or not.
+                 *
+                 * @since 2.2.0
+                 *
+                 * @var boolean
+                 */
+                public $bulk = false;
 
-                // Pass installer skin object and set bulk property to true.
-                $this->init();
-                $this->bulk = true;
+                /**
+                 * Processes the bulk installation of plugins.
+                 *
+                 * @since 2.2.0
+                 *
+                 * @param array $packages The plugin sources needed for installation.
+                 * @return string|boolean Install confirmation messages on success, false on failure.
+                 */
+                public function bulk_install( $packages ) {
 
-                // Set install strings and automatic activation strings (if config option is set to true).
-                $this->install_strings();
-                if ( TGM_Plugin_Activation::$instance->is_automatic ) {
-                    $this->activate_strings();
-                }
+                    // Pass installer skin object and set bulk property to true.
+                    $this->init();
+                    $this->bulk = true;
 
-                // Run the header string to notify user that the process has begun.
-                $this->skin->header();
+                    // Set install strings and automatic activation strings (if config option is set to true).
+                    $this->install_strings();
+                    if ( TGM_Plugin_Activation::$instance->is_automatic ) {
+                        $this->activate_strings();
+                    }
 
-                // Connect to the Filesystem.
-                $res = $this->fs_connect( array( WP_CONTENT_DIR, WP_PLUGIN_DIR ) );
-                if ( ! $res ) {
+                    // Run the header string to notify user that the process has begun.
+                    $this->skin->header();
+
+                    // Connect to the Filesystem.
+                    $res = $this->fs_connect( array( WP_CONTENT_DIR, WP_PLUGIN_DIR ) );
+                    if ( ! $res ) {
+                        $this->skin->footer();
+                        return false;
+                    }
+
+                    // Set the bulk header and prepare results array.
+                    $this->skin->bulk_header();
+                    $results = array();
+
+                    // Get the total number of packages being processed and iterate as each package is successfully installed.
+                    $this->update_count   = count( $packages );
+                    $this->update_current = 0;
+
+                    // Loop through each plugin and process the installation.
+                    foreach ( $packages as $plugin ) {
+                        $this->update_current++; // Increment counter.
+
+                        // Do the plugin install.
+                        $result = $this->run(
+                            array(
+                                'package'           => $plugin, // The plugin source.
+                                'destination'       => WP_PLUGIN_DIR, // The destination dir.
+                                'clear_destination' => false, // Do we want to clear the destination or not?
+                                'clear_working'     => true, // Remove original install file.
+                                'is_multi'          => true, // Are we processing multiple installs?
+                                'hook_extra'        => array( 'plugin' => $plugin, ), // Pass plugin source as extra data.
+                            )
+                        );
+
+                        // Store installation results in result property.
+                        $results[$plugin] = $this->result;
+
+                        // Prevent credentials auth screen from displaying multiple times.
+                        if ( false === $result ) {
+                            break;
+                        }
+                    }
+
+                    // Pass footer skin strings.
+                    $this->skin->bulk_footer();
                     $this->skin->footer();
-                    return false;
+
+                    // Return our results.
+                    return $results;
+
                 }
 
-                // Set the bulk header and prepare results array.
-                $this->skin->bulk_header();
-                $results = array();
+                /**
+                 * Performs the actual installation of each plugin.
+                 *
+                 * This method also activates the plugin in the automatic flag has been
+                 * set to true for the TGMPA class.
+                 *
+                 * @since 2.2.0
+                 *
+                 * @param array $options The installation config options
+                 * @return null/array Return early if error, array of installation data on success
+                 */
+                public function run( $options ) {
 
-                // Get the total number of packages being processed and iterate as each package is successfully installed.
-                $this->update_count   = count( $packages );
-                $this->update_current = 0;
+                    // Default config options.
+                    $defaults = array(
+                        'package'           => '',
+                        'destination'       => '',
+                        'clear_destination' => false,
+                        'clear_working'     => true,
+                        'is_multi'          => false,
+                        'hook_extra'        => array(),
+                    );
 
-                // Loop through each plugin and process the installation.
-                foreach ( $packages as $plugin ) {
-                    $this->update_current++; // Increment counter.
+                    // Parse default options with config options from $this->bulk_upgrade and extract them.
+                    $options = wp_parse_args( $options, $defaults );
+                    extract( $options );
 
-                    // Do the plugin install.
-                    $result = $this->run(
+                    // Connect to the Filesystem.
+                    $res = $this->fs_connect( array( WP_CONTENT_DIR, $destination ) );
+                    if ( ! $res ) {
+                        return false;
+                    }
+
+                    // Return early if there is an error connecting to the Filesystem.
+                    if ( is_wp_error( $res ) ) {
+                        $this->skin->error( $res );
+                        return $res;
+                    }
+
+                    // Call $this->header separately if running multiple times.
+                    if ( ! $is_multi )
+                        $this->skin->header();
+
+                    // Set strings before the package is installed.
+                    $this->skin->before();
+
+                    // Download the package (this just returns the filename of the file if the package is a local file).
+                    $download = $this->download_package( $package );
+                    if ( is_wp_error( $download ) ) {
+                        $this->skin->error( $download );
+                        $this->skin->after();
+                        return $download;
+                    }
+
+                    // Don't accidentally delete a local file.
+                    $delete_package = ( $download != $package );
+
+                    // Unzip file into a temporary working directory.
+                    $working_dir = $this->unpack_package( $download, $delete_package );
+                    if ( is_wp_error( $working_dir ) ) {
+                        $this->skin->error( $working_dir );
+                        $this->skin->after();
+                        return $working_dir;
+                    }
+
+                    // Install the package into the working directory with all passed config options.
+                    $result = $this->install_package(
                         array(
-                            'package'           => $plugin, // The plugin source.
-                            'destination'       => WP_PLUGIN_DIR, // The destination dir.
-                            'clear_destination' => false, // Do we want to clear the destination or not?
-                            'clear_working'     => true, // Remove original install file.
-                            'is_multi'          => true, // Are we processing multiple installs?
-                            'hook_extra'        => array( 'plugin' => $plugin, ), // Pass plugin source as extra data.
+                            'source'            => $working_dir,
+                            'destination'       => $destination,
+                            'clear_destination' => $clear_destination,
+                            'clear_working'     => $clear_working,
+                            'hook_extra'        => $hook_extra,
                         )
                     );
 
-                    // Store installation results in result property.
-                    $results[$plugin] = $this->result;
+                    // Pass the result of the installation.
+                    $this->skin->set_result( $result );
 
-                    // Prevent credentials auth screen from displaying multiple times.
-                    if ( false === $result ) {
-                        break;
+                    // Set correct strings based on results.
+                    if ( is_wp_error( $result ) ) {
+                        $this->skin->error( $result );
+                        $this->skin->feedback( 'process_failed' );
                     }
-                }
+                    // The plugin install is successful.
+                    else {
+                        $this->skin->feedback( 'process_success' );
+                    }
 
-                // Pass footer skin strings.
-                $this->skin->bulk_footer();
-                $this->skin->footer();
+                    // Only process the activation of installed plugins if the automatic flag is set to true.
+                    if ( TGM_Plugin_Activation::$instance->is_automatic ) {
+                        // Flush plugins cache so we can make sure that the installed plugins list is always up to date.
+                        wp_cache_flush();
 
-                // Return our results.
-                return $results;
+                        // Get the installed plugin file and activate it.
+                        $plugin_info = $this->plugin_info( $package );
+                        $activate    = activate_plugin( $plugin_info );
 
-            }
+                        // Re-populate the file path now that the plugin has been installed and activated.
+                        TGM_Plugin_Activation::$instance->populate_file_path();
 
-            /**
-             * Performs the actual installation of each plugin.
-             *
-             * This method also activates the plugin in the automatic flag has been
-             * set to true for the TGMPA class.
-             *
-             * @since 2.2.0
-             *
-             * @param array $options The installation cofig options
-             * @return null/array Return early if error, array of installation data on success
-             */
-            public function run( $options ) {
+                        // Set correct strings based on results.
+                        if ( is_wp_error( $activate ) ) {
+                            $this->skin->error( $activate );
+                            $this->skin->feedback( 'activation_failed' );
+                        }
+                        // The plugin activation is successful.
+                        else {
+                            $this->skin->feedback( 'activation_success' );
+                        }
+                    }
 
-                // Default config options.
-                $defaults = array(
-                    'package'           => '',
-                    'destination'       => '',
-                    'clear_destination' => false,
-                    'clear_working'     => true,
-                    'is_multi'          => false,
-                    'hook_extra'        => array(),
-                );
-
-                // Parse default options with config options from $this->bulk_upgrade and extract them.
-                $options = wp_parse_args( $options, $defaults );
-                extract( $options );
-
-                // Connect to the Filesystem.
-                $res = $this->fs_connect( array( WP_CONTENT_DIR, $destination ) );
-                if ( ! $res ) {
-                    return false;
-                }
-
-                // Return early if there is an error connecting to the Filesystem.
-                if ( is_wp_error( $res ) ) {
-                    $this->skin->error( $res );
-                    return $res;
-                }
-
-                // Call $this->header separately if running multiple times.
-                if ( ! $is_multi )
-                    $this->skin->header();
-
-                // Set strings before the package is installed.
-                $this->skin->before();
-
-                // Download the package (this just returns the filename of the file if the package is a local file).
-                $download = $this->download_package( $package );
-                if ( is_wp_error( $download ) ) {
-                    $this->skin->error( $download );
-                    $this->skin->after();
-                    return $download;
-                }
-
-                // Don't accidentally delete a local file.
-                $delete_package = ( $download != $package );
-
-                // Unzip file into a temporary working directory.
-                $working_dir = $this->unpack_package( $download, $delete_package );
-                if ( is_wp_error( $working_dir ) ) {
-                    $this->skin->error( $working_dir );
-                    $this->skin->after();
-                    return $working_dir;
-                }
-
-                // Install the package into the working directory with all passed config options.
-                $result = $this->install_package(
-                    array(
-                        'source'            => $working_dir,
-                        'destination'       => $destination,
-                        'clear_destination' => $clear_destination,
-                        'clear_working'     => $clear_working,
-                        'hook_extra'        => $hook_extra,
-                    )
-                );
-
-                // Pass the result of the installation.
-                $this->skin->set_result( $result );
-
-                // Set correct strings based on results.
-                if ( is_wp_error( $result ) ) {
-                    $this->skin->error( $result );
-                    $this->skin->feedback( 'process_failed' );
-                }
-                // The plugin install is successful.
-                else {
-                    $this->skin->feedback( 'process_success' );
-                }
-
-                // Only process the activation of installed plugins if the automatic flag is set to true.
-                if ( TGM_Plugin_Activation::$instance->is_automatic ) {
                     // Flush plugins cache so we can make sure that the installed plugins list is always up to date.
                     wp_cache_flush();
 
-                    // Get the installed plugin file and activate it.
-                    $plugin_info = $this->plugin_info( $package );
-                    $activate    = activate_plugin( $plugin_info );
-
-                    // Re-populate the file path now that the plugin has been installed and activated.
-                    TGM_Plugin_Activation::$instance->populate_file_path();
-
-                    // Set correct strings based on results.
-                    if ( is_wp_error( $activate ) ) {
-                        $this->skin->error( $activate );
-                        $this->skin->feedback( 'activation_failed' );
+                    // Set install footer strings.
+                    $this->skin->after();
+                    if ( ! $is_multi ) {
+                        $this->skin->footer();
                     }
-                    // The plugin activation is successful.
+
+                    return $result;
+
+                }
+
+                /**
+                 * Sets the correct install strings for the installer skin to use.
+                 *
+                 * @since 2.2.0
+                 */
+                public function install_strings() {
+
+                    $this->strings['no_package']          = __( 'Install package not available.', 'tgmpa' );
+                    $this->strings['downloading_package'] = __( 'Downloading install package from <span class="code">%s</span>&#8230;', 'tgmpa' );
+                    $this->strings['unpack_package']      = __( 'Unpacking the package&#8230;', 'tgmpa' );
+                    $this->strings['installing_package']  = __( 'Installing the plugin&#8230;', 'tgmpa' );
+                    $this->strings['process_failed']      = __( 'Plugin install failed.', 'tgmpa' );
+                    $this->strings['process_success']     = __( 'Plugin installed successfully.', 'tgmpa' );
+
+                }
+
+                /**
+                 * Sets the correct activation strings for the installer skin to use.
+                 *
+                 * @since 2.2.0
+                 */
+                public function activate_strings() {
+
+                    $this->strings['activation_failed']  = __( 'Plugin activation failed.', 'tgmpa' );
+                    $this->strings['activation_success'] = __( 'Plugin activated successfully.', 'tgmpa' );
+
+                }
+
+                /**
+                 * Grabs the plugin file from an installed plugin.
+                 *
+                 * @since 2.2.0
+                 *
+                 * @return string|boolean Return plugin file on success, false on failure
+                 */
+                public function plugin_info() {
+
+                    // Return false if installation result isn't an array or the destination name isn't set.
+                    if ( ! is_array( $this->result ) ) {
+                        return false;
+                    }
+
+                    if ( empty( $this->result['destination_name'] ) ) {
+                        return false;
+                    }
+
+                    /// Get the installed plugin file or return false if it isn't set.
+                    $plugin = get_plugins( '/' . $this->result['destination_name'] );
+                    if ( empty( $plugin ) ) {
+                        return false;
+                    }
+
+                    // Assume the requested plugin is the first in the list.
+                    $pluginfiles = array_keys( $plugin );
+
+                    return $this->result['destination_name'] . '/' . $pluginfiles[0];
+
+                }
+
+            }
+        }
+
+        if ( ! class_exists( 'TGM_Bulk_Installer_Skin' ) ) {
+            /**
+             * Installer skin to set strings for the bulk plugin installations..
+             *
+             * Extends Bulk_Upgrader_Skin and customizes to suit the installation of multiple
+             * plugins.
+             *
+             * @since 2.2.0
+             *
+             * @package TGM-Plugin-Activation
+             * @author  Thomas Griffin <thomasgriffinmedia.com>
+             * @author  Gary Jones <gamajo.com>
+             */
+            class TGM_Bulk_Installer_Skin extends Bulk_Upgrader_Skin {
+
+                /**
+                 * Holds plugin info for each individual plugin installation.
+                 *
+                 * @since 2.2.0
+                 *
+                 * @var array
+                 */
+                public $plugin_info = array();
+
+                /**
+                 * Holds names of plugins that are undergoing bulk installations.
+                 *
+                 * @since 2.2.0
+                 *
+                 * @var array
+                 */
+                public $plugin_names = array();
+
+                /**
+                 * Integer to use for iteration through each plugin installation.
+                 *
+                 * @since 2.2.0
+                 *
+                 * @var integer
+                 */
+                public $i = 0;
+
+                /**
+                 * Constructor. Parses default args with new ones and extracts them for use.
+                 *
+                 * @since 2.2.0
+                 *
+                 * @param array $args Arguments to pass for use within the class.
+                 */
+                public function __construct( $args = array() ) {
+
+                    // Parse default and new args.
+                    $defaults = array( 'url' => '', 'nonce' => '', 'names' => array() );
+                    $args     = wp_parse_args( $args, $defaults );
+
+                    // Set plugin names to $this->plugin_names property.
+                    $this->plugin_names = $args['names'];
+
+                    // Extract the new args.
+                    parent::__construct( $args );
+
+                }
+
+                /**
+                 * Sets install skin strings for each individual plugin.
+                 *
+                 * Checks to see if the automatic activation flag is set and uses the
+                 * the proper strings accordingly.
+                 *
+                 * @since 2.2.0
+                 */
+                public function add_strings() {
+
+                    // Automatic activation strings.
+                    if ( TGM_Plugin_Activation::$instance->is_automatic ) {
+                        $this->upgrader->strings['skin_upgrade_start']        = __( 'The installation and activation process is starting. This process may take a while on some hosts, so please be patient.', 'tgmpa' );
+                        $this->upgrader->strings['skin_update_successful']    = __( '%1$s installed and activated successfully.', 'tgmpa' ) . ' <a onclick="%2$s" href="#" class="hide-if-no-js"><span>' . __( 'Show Details', 'tgmpa' ) . '</span><span class="hidden">' . __( 'Hide Details', 'tgmpa' ) . '</span>.</a>';
+                        $this->upgrader->strings['skin_upgrade_end']          = __( 'All installations and activations have been completed.', 'tgmpa' );
+                        $this->upgrader->strings['skin_before_update_header'] = __( 'Installing and Activating Plugin %1$s (%2$d/%3$d)', 'tgmpa' );
+                    }
+                    // Default installation strings.
                     else {
-                        $this->skin->feedback( 'activation_success' );
+                        $this->upgrader->strings['skin_upgrade_start']        = __( 'The installation process is starting. This process may take a while on some hosts, so please be patient.', 'tgmpa' );
+                        $this->upgrader->strings['skin_update_failed_error']  = __( 'An error occurred while installing %1$s: <strong>%2$s</strong>.', 'tgmpa' );
+                        $this->upgrader->strings['skin_update_failed']        = __( 'The installation of %1$s failed.', 'tgmpa' );
+                        $this->upgrader->strings['skin_update_successful']    = __( '%1$s installed successfully.', 'tgmpa' ) . ' <a onclick="%2$s" href="#" class="hide-if-no-js"><span>' . __( 'Show Details', 'tgmpa' ) . '</span><span class="hidden">' . __( 'Hide Details', 'tgmpa' ) . '</span>.</a>';
+                        $this->upgrader->strings['skin_upgrade_end']          = __( 'All installations have been completed.', 'tgmpa' );
+                        $this->upgrader->strings['skin_before_update_header'] = __( 'Installing Plugin %1$s (%2$d/%3$d)', 'tgmpa' );
                     }
+
                 }
 
-                // Flush plugins cache so we can make sure that the installed plugins list is always up to date.
-                wp_cache_flush();
+                /**
+                 * Outputs the header strings and necessary JS before each plugin installation.
+                 *
+                 * @since 2.2.0
+                 */
+                public function before( $title = '' ) {
 
-                // Set install footer strings.
-                $this->skin->after();
-                if ( ! $is_multi ) {
-                    $this->skin->footer();
+                    // We are currently in the plugin installation loop, so set to true.
+                    $this->in_loop = true;
+
+                    printf( '<h4>' . $this->upgrader->strings['skin_before_update_header'] . ' <img alt="" src="' . admin_url( 'images/wpspin_light.gif' ) . '" class="hidden waiting-' . $this->upgrader->update_current . '" style="vertical-align:middle;" /></h4>', $this->plugin_names[$this->i], $this->upgrader->update_current, $this->upgrader->update_count );
+                    echo '<script type="text/javascript">jQuery(\'.waiting-' . esc_js( $this->upgrader->update_current ) . '\').show();</script>';
+                    echo '<div class="update-messages hide-if-js" id="progress-' . esc_attr( $this->upgrader->update_current ) . '"><p>';
+
+                    // Flush header output buffer.
+                    $this->before_flush_output();
+
                 }
 
-                return $result;
+                /**
+                 * Outputs the footer strings and necessary JS after each plugin installation.
+                 *
+                 * Checks for any errors and outputs them if they exist, else output
+                 * success strings.
+                 *
+                 * @since 2.2.0
+                 */
+                public function after( $title = '' ) {
+
+                    // Close install strings.
+                    echo '</p></div>';
+
+                    // Output error strings if an error has occurred.
+                    if ( $this->error || ! $this->result ) {
+                        if ( $this->error ) {
+                            echo '<div class="error"><p>' . sprintf( $this->upgrader->strings['skin_update_failed_error'], $this->plugin_names[$this->i], $this->error ) . '</p></div>';
+                        } else {
+                            echo '<div class="error"><p>' . sprintf( $this->upgrader->strings['skin_update_failed'], $this->plugin_names[$this->i] ) . '</p></div>';
+                        }
+
+                        echo '<script type="text/javascript">jQuery(\'#progress-' . esc_js( $this->upgrader->update_current ) . '\').show();</script>';
+                    }
+
+                    // If the result is set and there are no errors, success!
+                    if ( ! empty( $this->result ) && ! is_wp_error( $this->result ) ) {
+                        echo '<div class="updated"><p>' . sprintf( $this->upgrader->strings['skin_update_successful'], $this->plugin_names[$this->i], 'jQuery(\'#progress-' . esc_js( $this->upgrader->update_current ) . '\').toggle();jQuery(\'span\', this).toggle(); return false;' ) . '</p></div>';
+                        echo '<script type="text/javascript">jQuery(\'.waiting-' . esc_js( $this->upgrader->update_current ) . '\').hide();</script>';
+                    }
+
+                    // Set in_loop and error to false and flush footer output buffer.
+                    $this->reset();
+                    $this->after_flush_output();
+
+                }
+
+                /**
+                 * Outputs links after bulk plugin installation is complete.
+                 *
+                 * @since 2.2.0
+                 */
+                public function bulk_footer() {
+
+                    // Serve up the string to say installations (and possibly activations) are complete.
+                    parent::bulk_footer();
+
+                    // Flush plugins cache so we can make sure that the installed plugins list is always up to date.
+                    wp_cache_flush();
+
+                    // Display message based on if all plugins are now active or not.
+                    $complete = array();
+                    foreach ( TGM_Plugin_Activation::$instance->plugins as $plugin ) {
+                        if ( ! is_plugin_active( $plugin['file_path'] ) ) {
+                            echo '<p><a href="' . add_query_arg( 'page', TGM_Plugin_Activation::$instance->menu, admin_url( 'themes.php' ) ) . '" title="' . esc_attr( TGM_Plugin_Activation::$instance->strings['return'] ) . '" target="_parent">' . TGM_Plugin_Activation::$instance->strings['return'] . '</a></p>';
+                            $complete[] = $plugin;
+                            break;
+                        }
+                        // Nothing to store.
+                        else {
+                            $complete[] = '';
+                        }
+                    }
+
+                    // Filter out any empty entries.
+                    $complete = array_filter( $complete );
+
+                    // All plugins are active, so we display the complete string and hide the menu to protect users.
+                    if ( empty( $complete ) ) {
+                        echo '<p>' .  sprintf( TGM_Plugin_Activation::$instance->strings['complete'], '<a href="' . admin_url() . '" title="' . __( 'Return to the Dashboard', 'tgmpa' ) . '">' . __( 'Return to the Dashboard', 'tgmpa' ) . '</a>' ) . '</p>';
+                        echo '<style type="text/css">#adminmenu .wp-submenu li.current { display: none !important; }</style>';
+                    }
+
+                }
+
+                /**
+                 * Flush header output buffer.
+                 *
+                 * @since 2.2.0
+                 */
+                public function before_flush_output() {
+
+                    wp_ob_end_flush_all();
+                    flush();
+
+                }
+
+                /**
+                 * Flush footer output buffer and iterate $this->i to make sure the
+                 * installation strings reference the correct plugin.
+                 *
+                 * @since 2.2.0
+                 */
+                public function after_flush_output() {
+
+                    wp_ob_end_flush_all();
+                    flush();
+                    $this->i++;
+
+                }
 
             }
-
-            /**
-             * Sets the correct install strings for the installer skin to use.
-             *
-             * @since 2.2.0
-             */
-            public function install_strings() {
-
-                $this->strings['no_package']          = __( 'Install package not available.', 'tgmpa' );
-                $this->strings['downloading_package'] = __( 'Downloading install package from <span class="code">%s</span>&#8230;', 'tgmpa' );
-                $this->strings['unpack_package']      = __( 'Unpacking the package&#8230;', 'tgmpa' );
-                $this->strings['installing_package']  = __( 'Installing the plugin&#8230;', 'tgmpa' );
-                $this->strings['process_failed']      = __( 'Plugin install failed.', 'tgmpa' );
-                $this->strings['process_success']     = __( 'Plugin installed successfully.', 'tgmpa' );
-
-            }
-
-            /**
-             * Sets the correct activation strings for the installer skin to use.
-             *
-             * @since 2.2.0
-             */
-            public function activate_strings() {
-
-                $this->strings['activation_failed']  = __( 'Plugin activation failed.', 'tgmpa' );
-                $this->strings['activation_success'] = __( 'Plugin activated successfully.', 'tgmpa' );
-
-            }
-
-            /**
-             * Grabs the plugin file from an installed plugin.
-             *
-             * @since 2.2.0
-             *
-             * @return string|boolean Return plugin file on success, false on failure
-             */
-            public function plugin_info() {
-
-                // Return false if installation result isn't an array or the destination name isn't set.
-                if ( ! is_array( $this->result ) ) {
-                    return false;
-                }
-
-                if ( empty( $this->result['destination_name'] ) ) {
-                    return false;
-                }
-
-                /// Get the installed plugin file or return false if it isn't set.
-                $plugin = get_plugins( '/' . $this->result['destination_name'] );
-                if ( empty( $plugin ) ) {
-                    return false;
-                }
-
-                // Assume the requested plugin is the first in the list.
-                $pluginfiles = array_keys( $plugin );
-
-                return $this->result['destination_name'] . '/' . $pluginfiles[0];
-
-            }
-
         }
     }
 
-    if ( ! class_exists( 'TGM_Bulk_Installer_Skin' ) ) {
-        /**
-         * Installer skin to set strings for the bulk plugin installations..
-         *
-         * Extends Bulk_Upgrader_Skin and customizes to suit the installation of multiple
-         * plugins.
-         *
-         * @since 2.2.0
-         *
-         * @package TGM-Plugin-Activation
-         * @author  Thomas Griffin <thomasgriffinmedia.com>
-         * @author  Gary Jones <gamajo.com>
-         */
-        class TGM_Bulk_Installer_Skin extends Bulk_Upgrader_Skin {
-
-            /**
-             * Holds plugin info for each individual plugin installation.
-             *
-             * @since 2.2.0
-             *
-             * @var array
-             */
-            public $plugin_info = array();
-
-            /**
-             * Holds names of plugins that are undergoing bulk installations.
-             *
-             * @since 2.2.0
-             *
-             * @var array
-             */
-            public $plugin_names = array();
-
-            /**
-             * Integer to use for iteration through each plugin installation.
-             *
-             * @since 2.2.0
-             *
-             * @var integer
-             */
-            public $i = 0;
-
-            /**
-             * Constructor. Parses default args with new ones and extracts them for use.
-             *
-             * @since 2.2.0
-             *
-             * @param array $args Arguments to pass for use within the class.
-             */
-            public function __construct( $args = array() ) {
-
-                // Parse default and new args.
-                $defaults = array( 'url' => '', 'nonce' => '', 'names' => array() );
-                $args     = wp_parse_args( $args, $defaults );
-
-                // Set plugin names to $this->plugin_names property.
-                $this->plugin_names = $args['names'];
-
-                // Extract the new args.
-                parent::__construct( $args );
-
-            }
-
-            /**
-             * Sets install skin strings for each individual plugin.
-             *
-             * Checks to see if the automatic activation flag is set and uses the
-             * the proper strings accordingly.
-             *
-             * @since 2.2.0
-             */
-            public function add_strings() {
-
-                // Automatic activation strings.
-                if ( TGM_Plugin_Activation::$instance->is_automatic ) {
-                    $this->upgrader->strings['skin_upgrade_start']        = __( 'The installation and activation process is starting. This process may take a while on some hosts, so please be patient.', 'tgmpa' );
-                    $this->upgrader->strings['skin_update_successful']    = __( '%1$s installed and activated successfully.', 'tgmpa' ) . ' <a onclick="%2$s" href="#" class="hide-if-no-js"><span>' . __( 'Show Details', 'tgmpa' ) . '</span><span class="hidden">' . __( 'Hide Details', 'tgmpa' ) . '</span>.</a>';
-                    $this->upgrader->strings['skin_upgrade_end']          = __( 'All installations and activations have been completed.', 'tgmpa' );
-                    $this->upgrader->strings['skin_before_update_header'] = __( 'Installing and Activating Plugin %1$s (%2$d/%3$d)', 'tgmpa' );
-                }
-                // Default installation strings.
-                else {
-                    $this->upgrader->strings['skin_upgrade_start']        = __( 'The installation process is starting. This process may take a while on some hosts, so please be patient.', 'tgmpa' );
-                    $this->upgrader->strings['skin_update_failed_error']  = __( 'An error occurred while installing %1$s: <strong>%2$s</strong>.', 'tgmpa' );
-                    $this->upgrader->strings['skin_update_failed']        = __( 'The installation of %1$s failed.', 'tgmpa' );
-                    $this->upgrader->strings['skin_update_successful']    = __( '%1$s installed successfully.', 'tgmpa' ) . ' <a onclick="%2$s" href="#" class="hide-if-no-js"><span>' . __( 'Show Details', 'tgmpa' ) . '</span><span class="hidden">' . __( 'Hide Details', 'tgmpa' ) . '</span>.</a>';
-                    $this->upgrader->strings['skin_upgrade_end']          = __( 'All installations have been completed.', 'tgmpa' );
-                    $this->upgrader->strings['skin_before_update_header'] = __( 'Installing Plugin %1$s (%2$d/%3$d)', 'tgmpa' );
-                }
-
-            }
-
-            /**
-             * Outputs the header strings and necessary JS before each plugin installation.
-             *
-             * @since 2.2.0
-             */
-            public function before( $title = '' ) {
-
-                // We are currently in the plugin installation loop, so set to true.
-                $this->in_loop = true;
-
-                printf( '<h4>' . $this->upgrader->strings['skin_before_update_header'] . ' <img alt="" src="' . admin_url( 'images/wpspin_light.gif' ) . '" class="hidden waiting-' . $this->upgrader->update_current . '" style="vertical-align:middle;" /></h4>', $this->plugin_names[$this->i], $this->upgrader->update_current, $this->upgrader->update_count );
-                echo '<script type="text/javascript">jQuery(\'.waiting-' . esc_js( $this->upgrader->update_current ) . '\').show();</script>';
-                echo '<div class="update-messages hide-if-js" id="progress-' . esc_attr( $this->upgrader->update_current ) . '"><p>';
-
-                // Flush header output buffer.
-                $this->before_flush_output();
-
-            }
-
-            /**
-             * Outputs the footer strings and necessary JS after each plugin installation.
-             *
-             * Checks for any errors and outputs them if they exist, else output
-             * success strings.
-             *
-             * @since 2.2.0
-             */
-            public function after( $title = '' ) {
-
-                // Close install strings.
-                echo '</p></div>';
-
-                // Output error strings if an error has occurred.
-                if ( $this->error || ! $this->result ) {
-                    if ( $this->error ) {
-                        echo '<div class="error"><p>' . sprintf( $this->upgrader->strings['skin_update_failed_error'], $this->plugin_names[$this->i], $this->error ) . '</p></div>';
-                    } else {
-                        echo '<div class="error"><p>' . sprintf( $this->upgrader->strings['skin_update_failed'], $this->plugin_names[$this->i] ) . '</p></div>';
-                    }
-
-                    echo '<script type="text/javascript">jQuery(\'#progress-' . esc_js( $this->upgrader->update_current ) . '\').show();</script>';
-                }
-
-                // If the result is set and there are no errors, success!
-                if ( ! empty( $this->result ) && ! is_wp_error( $this->result ) ) {
-                    echo '<div class="updated"><p>' . sprintf( $this->upgrader->strings['skin_update_successful'], $this->plugin_names[$this->i], 'jQuery(\'#progress-' . esc_js( $this->upgrader->update_current ) . '\').toggle();jQuery(\'span\', this).toggle(); return false;' ) . '</p></div>';
-                    echo '<script type="text/javascript">jQuery(\'.waiting-' . esc_js( $this->upgrader->update_current ) . '\').hide();</script>';
-                }
-
-                // Set in_loop and error to false and flush footer output buffer.
-                $this->reset();
-                $this->after_flush_output();
-
-            }
-
-            /**
-             * Outputs links after bulk plugin installation is complete.
-             *
-             * @since 2.2.0
-             */
-            public function bulk_footer() {
-
-                // Serve up the string to say installations (and possibly activations) are complete.
-                parent::bulk_footer();
-
-                // Flush plugins cache so we can make sure that the installed plugins list is always up to date.
-                wp_cache_flush();
-
-                // Display message based on if all plugins are now active or not.
-                $complete = array();
-                foreach ( TGM_Plugin_Activation::$instance->plugins as $plugin ) {
-                    if ( ! is_plugin_active( $plugin['file_path'] ) ) {
-                        echo '<p><a href="' . add_query_arg( 'page', TGM_Plugin_Activation::$instance->menu, admin_url( 'themes.php' ) ) . '" title="' . esc_attr( TGM_Plugin_Activation::$instance->strings['return'] ) . '" target="_parent">' . TGM_Plugin_Activation::$instance->strings['return'] . '</a></p>';
-                        $complete[] = $plugin;
-                        break;
-                    }
-                    // Nothing to store.
-                    else {
-                        $complete[] = '';
-                    }
-                }
-
-                // Filter out any empty entries.
-                $complete = array_filter( $complete );
-
-                // All plugins are active, so we display the complete string and hide the menu to protect users.
-                if ( empty( $complete ) ) {
-                    echo '<p>' .  sprintf( TGM_Plugin_Activation::$instance->strings['complete'], '<a href="' . admin_url() . '" title="' . __( 'Return to the Dashboard', 'tgmpa' ) . '">' . __( 'Return to the Dashboard', 'tgmpa' ) . '</a>' ) . '</p>';
-                    echo '<style type="text/css">#adminmenu .wp-submenu li.current { display: none !important; }</style>';
-                }
-
-            }
-
-            /**
-             * Flush header output buffer.
-             *
-             * @since 2.2.0
-             */
-            public function before_flush_output() {
-
-                wp_ob_end_flush_all();
-                flush();
-
-            }
-
-            /**
-             * Flush footer output buffer and iterate $this->i to make sure the
-             * installation strings reference the correct plugin.
-             *
-             * @since 2.2.0
-             */
-            public function after_flush_output() {
-
-                wp_ob_end_flush_all();
-                flush();
-                $this->i++;
-
-            }
-
-        }
-    }
 }
