@@ -97,7 +97,7 @@ endif;
  * @return bool
  */
 function _mbbasetheme_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
+	if ( false === ( $all_the_cool_cats = get_transient( '_mbbasetheme_categories' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
 		$all_the_cool_cats = get_categories( array(
 			'fields'     => 'ids',
@@ -110,7 +110,7 @@ function _mbbasetheme_categorized_blog() {
 		// Count the number of categories that are attached to the posts.
 		$all_the_cool_cats = count( $all_the_cool_cats );
 
-		set_transient( 'all_the_cool_cats', $all_the_cool_cats );
+		set_transient( '_mbbasetheme_categories', $all_the_cool_cats );
 	}
 
 	if ( $all_the_cool_cats > 1 ) {
@@ -127,7 +127,7 @@ function _mbbasetheme_categorized_blog() {
  */
 function _mbbasetheme_category_transient_flusher() {
 	// Like, beat it. Dig?
-	delete_transient( 'all_the_cool_cats' );
+	delete_transient( '_mbbasetheme_categories' );
 }
 add_action( 'edit_category', '_mbbasetheme_category_transient_flusher' );
 add_action( 'save_post',     '_mbbasetheme_category_transient_flusher' );

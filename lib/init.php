@@ -94,6 +94,7 @@ function _mbbasetheme_setup() {
 		'search-form',
 		'comment-form',
 		'gallery',
+		'caption',
 	) );
 
 	// Enable support for Post Formats.
