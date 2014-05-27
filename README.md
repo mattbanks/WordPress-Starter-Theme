@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 4.0.0
+Version: 4.1.0
 
 ## Author:
 
@@ -8,7 +8,7 @@ Matt Banks ( [@mattbanks](http://twitter.com/mattbanks) / [kernelcreativemedia.c
 
 ## Summary
 
-WordPress Starter Theme for use as a starting template for building custom themes. Uses SCSS and AutoPrefixr, HTML5 Boilerplate with Modernizr and Normalize.css, and Grunt for all processing tasks. Tested with WordPress 3.8.1.
+WordPress Starter Theme for use as a starting template for building custom themes. Uses SCSS and AutoPrefixr, HTML5 Boilerplate with Modernizr and Normalize.css, and Grunt for all processing tasks. Tested with WordPress 3.9.1.
 
 ## Usage
 
@@ -16,8 +16,8 @@ The theme is setup to use [Grunt](http://gruntjs.com/) to compile SCSS (with sou
 
 Rename folder to your theme name, change the `style.scss` intro block to your theme information. Open the theme directory in terminal and run `npm install` to pull in all Grunt dependencies. Run `grunt` to execute tasks. Code as you will. If you have the LiveReload browser extension, it will reload after any SCSS or JS changes.
 
-- Compile `assets/styles/source/style.scss` to `style.css`
-- Compile `assets/styles/source/editor-style.scss` to `editor-style.css`
+- Compile `assets/styles/style.scss` to `style.css`
+- Compile `assets/styles/editor-style.scss` to `editor-style.css`
 - Concatenate and minify plugins in `assets/js/vendor` and `assets/js/source/plugins.js` to `assets/js/plugins.min.js`
 - Minify and lint `assets/js/source/main.js` to `assets/js/main.min.js`
 - ??
@@ -31,7 +31,7 @@ Supports [bower](https://github.com/bower/bower) to install and manage JavaScrip
 
 ### Image Optimization
 
-To optimize images, run `grunt imagemin`. This was previously included in the default `watch` task, but there are currently a few issues with processing images multiple times and removing their contents.
+To optimize images, run `grunt imagemin`. This was also included in the default `watch` task, but there are currently a few issues with processing images multiple times and removing their contents.
 
 ### Deployment
 

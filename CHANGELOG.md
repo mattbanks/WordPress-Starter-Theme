@@ -1,5 +1,16 @@
 # Changelog
 
+## Version 4.1.0
+
+* update to latest [_s](https://github.com/Automattic/_s) code base
+* update to latest [h5bp](https://github.com/h5bp/html5-boilerplate) code base
+* remove modernizr since we're only supporting IE9+
+* move scss source files back to assets/styles
+* update to latest [TGM Plugin Activation](https://github.com/thomasgriffin/TGM-Plugin-Activation) code
+* add imagemin back to grunt watch tasks (no longer causing issues)
+* update grunt packages
+* general cleanup
+
 ## Version 4.0.0
 
 * update to latest [_s](https://github.com/Automattic/_s) code base
