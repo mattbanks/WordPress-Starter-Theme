@@ -9,12 +9,16 @@ module.exports = function(grunt) {
         // watch for changes and trigger sass, jshint, uglify and livereload
         watch: {
             sass: {
-                files: ['assets/styles/source/**/*.{scss,sass}'],
+                files: ['assets/styles/**/*.{scss,sass}'],
                 tasks: ['sass', 'autoprefixer', 'cssmin']
             },
             js: {
                 files: '<%= jshint.all %>',
                 tasks: ['jshint', 'uglify']
+            },
+            images: {
+                files: ['assets/images/**/*.{png,jpg,gif}'],
+                tasks: ['imagemin']
             },
             livereload: {
                 options: { livereload: true },
@@ -30,8 +34,8 @@ module.exports = function(grunt) {
                     style: 'expanded',
                 },
                 files: {
-                    'assets/styles/build/style.css': 'assets/styles/source/style.scss',
-                    'assets/styles/build/editor-style.css': 'assets/styles/source/editor-style.scss'
+                    'assets/styles/build/style.css': 'assets/styles/style.scss',
+                    'assets/styles/build/editor-style.css': 'assets/styles/editor-style.scss'
                 }
             }
         },
@@ -152,6 +156,6 @@ module.exports = function(grunt) {
     grunt.renameTask('rsync', 'deploy');
 
     // register task
-    grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify', 'watch']);
+    grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify', 'imagemin', 'watch']);
 
 };
