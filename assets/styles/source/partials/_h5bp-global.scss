@@ -1,6 +1,6 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+
 /*
- * HTML5 Boilerplate
- *
  * What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
  * Kroc Camen, and the H5BP dev community and team.
@@ -10,10 +10,17 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
 html {
-	color: #222;
-	font-size: 1em;
-	line-height: 1.4;
+    font-size: 1em;
+    line-height: 1.4;
 }
 
 /*
@@ -37,12 +44,12 @@ html {
  */
 
 hr {
-	display: block;
-	height: 1px;
-	border: 0;
-	border-top: 1px solid #ccc;
-	margin: 1em 0;
-	padding: 0;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
 }
 
 /*
@@ -53,9 +60,8 @@ hr {
 audio,
 canvas,
 img,
-svg,
 video {
-	vertical-align: middle;
+    vertical-align: middle;
 }
 
 /*
@@ -63,9 +69,9 @@ video {
  */
 
 fieldset {
-	border: 0;
-	margin: 0;
-	padding: 0;
+    border: 0;
+    margin: 0;
+    padding: 0;
 }
 
 /*
