@@ -6,8 +6,8 @@ var gulp = require('gulp'),
 
 // Styles
 gulp.task('styles', function() {
-  return gulp.src('assets/styles/source/*.scss')
-	.pipe(plugins.rubySass({ style: 'expanded', compass: true }))
+  return gulp.src('assets/styles/*.scss')
+	.pipe(plugins.rubySass({ style: 'expanded', sourcemap: true }))
 	.pipe(plugins.autoprefixer('last 2 versions', 'ie 9', 'ios 6', 'android 4'))
 	.pipe(gulp.dest('assets/styles/build'))
 	.pipe(plugins.minifyCss({ keepSpecialComments: 1 }))
@@ -61,7 +61,7 @@ gulp.task('watch', function() {
 	};
 
 	// Watch .scss files
-	gulp.watch('assets/styles/source/**/*.scss', ['styles']);
+	gulp.watch('assets/styles/**/*.scss', ['styles']);
 
 	// Watch .js files
 	gulp.watch('assets/js/**/*.js', ['plugins', 'scripts']);
