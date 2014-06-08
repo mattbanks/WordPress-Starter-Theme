@@ -1,0 +1,91 @@
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+
+/*
+ * Mixin for easy media queries
+ * @include bp(tablet) { SCSS here };
+*/
+@mixin bp($point) {
+	@if $point == biggie {
+		@media (max-width : 1600px) { @content; }
+	}
+	@if $point == tablet {
+		@media (max-width : 1024px) { @content; }
+	}
+	@else if $point == phone {
+		@media (max-width : 768px) { @content; }
+	}
+}
+
+/*
+ * Mixin for clearfix
+ * @include clearfix;
+*/
+@mixin clearfix {
+	&:before,
+	&:after {
+	    content: " "; /* 1 */
+	    display: table; /* 2 */
+	}
+
+	&:after {
+	    clear: both;
+	}
+}
+
+/*
+ * Mixin for basic CSS triangles
+ * @include triangle(up, #000, 50px)
+*/
+@mixin triangle($direction:up, $color:#000, $size:100px) {
+	@if($direction == up) {
+		border-color: transparent transparent $color;
+		border-style: solid;
+		border-width: 0 $size $size;
+		height: 0;
+		width: 0;
+	}
+	@if($direction == down) {
+		border-color: $color transparent transparent transparent;
+		border-style: solid;
+		border-width: $size;
+		height:0;
+		width:0;
+	}
+	@if($direction == left) {
+		border-color: transparent $color transparent transparent;
+		border-style: solid;
+		border-width: $size $size $size 0;
+		height: 0;
+		width: 0;
+	}
+	@if($direction == right) {
+		border-color: transparent transparent transparent $color;
+		border-style: solid;
+		border-width: $size 0 $size $size;
+		height:0;
+		width:0;
+	}
+}
+
+/*
+ * @font-face mixin
+ * Bulletproof font-face via Font Squirrel
+ * @include fontface('family', 'assets/fonts/', 'myfontname');
+ */
+
+@mixin fontface($font-family, $font-url, $font-name) {
+	@font-face {
+		font: {
+			family: $font-family;
+			style: normal;
+			weight: normal;
+		}
+		src: url($font-url + '/' + $font-name + '.eot');
+		src: url($font-url + '/' + $font-name + '.eot#iefix') format('embedded-opentype'),
+			 url($font-url + '/' + $font-name + '.woff') format('woff'),
+			 url($font-url + '/' + $font-name + '.ttf')  format('truetype'),
+			 url($font-url + '/' + $font-name + '.svg#' + $font-name) format('svg');
+	}
+}

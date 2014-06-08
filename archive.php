@@ -1,86 +1,105 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying Archive pages.
+ *
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package _mbbasetheme
+ */
 
-	<section id="main" role="main">
+get_header(); ?>
+
+	<section id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
-			<h1>
+			<header class="page-header">
+				<h1 class="page-title">
+					<?php
+						if ( is_category() ) :
+							single_cat_title();
+
+						elseif ( is_tag() ) :
+							single_tag_title();
+
+						elseif ( is_author() ) :
+							printf( __( 'Author: %s', '_mbbasetheme' ), '<span class="vcard">' . get_the_author() . '</span>' );
+
+						elseif ( is_day() ) :
+							printf( __( 'Day: %s', '_mbbasetheme' ), '<span>' . get_the_date() . '</span>' );
+
+						elseif ( is_month() ) :
+							printf( __( 'Month: %s', '_mbbasetheme' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', '_mbbasetheme' ) ) . '</span>' );
+
+						elseif ( is_year() ) :
+							printf( __( 'Year: %s', '_mbbasetheme' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', '_mbbasetheme' ) ) . '</span>' );
+
+						elseif ( is_tax( 'post_format', 'post-format-aside' ) ) :
+							_e( 'Asides', '_mbbasetheme' );
+
+						elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) :
+							_e( 'Galleries', '_mbbasetheme');
+
+						elseif ( is_tax( 'post_format', 'post-format-image' ) ) :
+							_e( 'Images', '_mbbasetheme');
+
+						elseif ( is_tax( 'post_format', 'post-format-video' ) ) :
+							_e( 'Videos', '_mbbasetheme' );
+
+						elseif ( is_tax( 'post_format', 'post-format-quote' ) ) :
+							_e( 'Quotes', '_mbbasetheme' );
+
+						elseif ( is_tax( 'post_format', 'post-format-link' ) ) :
+							_e( 'Links', '_mbbasetheme' );
+
+						elseif ( is_tax( 'post_format', 'post-format-status' ) ) :
+							_e( 'Statuses', '_mbbasetheme' );
+
+						elseif ( is_tax( 'post_format', 'post-format-audio' ) ) :
+							_e( 'Audios', '_mbbasetheme' );
+
+						elseif ( is_tax( 'post_format', 'post-format-chat' ) ) :
+							_e( 'Chats', '_mbbasetheme' );
+
+						else :
+							_e( 'Archives', '_mbbasetheme' );
+
+						endif;
+					?>
+				</h1>
 				<?php
-					if ( is_category() ) {
-						printf( __( 'Category Archives: %s', 'mattbanks' ), '<span>' . single_cat_title( '', false ) . '</span>' );
-
-					} elseif ( is_tag() ) {
-						printf( __( 'Tag Archives: %s', 'mattbanks' ), '<span>' . single_tag_title( '', false ) . '</span>' );
-
-					} elseif ( is_author() ) {
-						/* Queue the first post, that way we know
-						 * what author we're dealing with (if that is the case).
-						*/
-						the_post();
-						printf( __( 'Author Archives: %s', 'mattbanks' ), '<span class="vcard"><a class="url fn n" href="' . get_author_posts_url( get_the_author_meta( "ID" ) ) . '" title="' . esc_attr( get_the_author() ) . '" rel="me">' . get_the_author() . '</a></span>' );
-						/* Since we called the_post() above, we need to
-						 * rewind the loop back to the beginning that way
-						 * we can run the loop properly, in full.
-						 */
-						rewind_posts();
-
-					} elseif ( is_day() ) {
-						printf( __( 'Daily Archives: %s', 'mattbanks' ), '<span>' . get_the_date() . '</span>' );
-
-					} elseif ( is_month() ) {
-						printf( __( 'Monthly Archives: %s', 'mattbanks' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
-
-					} elseif ( is_year() ) {
-						printf( __( 'Yearly Archives: %s', 'mattbanks' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
-
-					} else {
-						_e( 'Archives', 'mattbanks' );
-
-					}
+					// Show an optional term description.
+					$term_description = term_description();
+					if ( ! empty( $term_description ) ) :
+						printf( '<div class="taxonomy-description">%s</div>', $term_description );
+					endif;
 				?>
-			</h1>
+			</header><!-- .page-header -->
 
-			<?php
-				if ( is_category() ) {
-					// show an optional category description
-					$category_description = category_description();
-					if ( ! empty( $category_description ) )
-						echo apply_filters( 'category_archive_meta', '<div class="taxonomy-description">' . $category_description . '</div>' );
-
-				} elseif ( is_tag() ) {
-					// show an optional tag description
-					$tag_description = tag_description();
-					if ( ! empty( $tag_description ) )
-						echo apply_filters( 'tag_archive_meta', '<div class="taxonomy-description">' . $tag_description . '</div>' );
-				}
-			?>
-
+			<?php /* Start the Loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<article <?php post_class() ?>>
-
-						<h1 id="post-<?php the_ID(); ?>"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h1>
-
-						<?php get_template_part( 'templates/partials/inc', 'meta' ); ?>
-
-						<div class="entry">
-							<?php the_content(); ?>
-						</div>
-
-				</article>
+				<?php
+					/* Include the Post-Format-specific template for the content.
+					 * If you want to override this in a child theme, then include a file
+					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+					 */
+					get_template_part( 'content', get_post_format() );
+				?>
 
 			<?php endwhile; ?>
 
-			<?php get_template_part( 'templates/partials/inc', 'nav' ); ?>
+			<?php _mbbasetheme_paging_nav(); ?>
 
-	<?php else : ?>
+		<?php else : ?>
 
-		<h1>Nothing found</h1>
+			<?php get_template_part( 'content', 'none' ); ?>
 
-	<?php endif; ?>
+		<?php endif; ?>
 
-	</section> <!-- /#main -->
+		</main><!-- #main -->
+	</section><!-- #primary -->
 
 <?php get_sidebar(); ?>
-
 <?php get_footer(); ?>
