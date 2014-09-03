@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 4.2.0
+
+* change from using livereload to browsersync
+* update to latest [_s](https://github.com/Automattic/_s) code base
+* update grunt packages
+* general cleanup
+
 ## Version 4.1.1
 
 * update grunt packages
