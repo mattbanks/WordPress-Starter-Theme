@@ -90,15 +90,13 @@ function _mbbasetheme_setup() {
 
 	// Enable support for HTML5 markup.
 	add_theme_support( 'html5', array(
-		'comment-list',
-		'search-form',
-		'comment-form',
-		'gallery',
-		'caption',
+		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption',
 	) );
 
 	// Enable support for Post Formats.
-	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
+	add_theme_support( 'post-formats', array(
+		'aside', 'image', 'video', 'quote', 'link',
+	) );
 
 	// Enqueue scripts
 	// Function location: /lib/theme-functions.php
