@@ -6,9 +6,8 @@
  *
  * @package _mbbasetheme
  */
-?>
-<!DOCTYPE html>
-<html class="no-js" <?php language_attributes(); ?>>
+?><!DOCTYPE html>
+<html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,7 +33,6 @@
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<button class="menu-toggle"><?php _e( 'Primary Menu', '_mbbasetheme' ); ?></button>
-
 			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
