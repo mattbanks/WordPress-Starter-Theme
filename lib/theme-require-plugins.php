@@ -15,13 +15,6 @@ function mb_register_required_plugins() {
 		),
 
 		array(
-			'name' 				=> 'Use Google Libraries',
-			'slug' 				=> 'use-google-libraries',
-			'required' 			=> true,
-			'force_activation'	=> true
-		),
-
-		array(
 			'name' 				=> 'Pods - Custom Content Types and Fields',
 			'slug' 				=> 'pods',
 			'required' 			=> true,
