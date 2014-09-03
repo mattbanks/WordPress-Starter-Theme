@@ -19,10 +19,6 @@ module.exports = function(grunt) {
             images: {
                 files: ['assets/images/**/*.{png,jpg,gif}'],
                 tasks: ['imagemin']
-            },
-            livereload: {
-                options: { livereload: true },
-                files: ['style.css', 'assets/js/*.js', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
             }
         },
 
@@ -30,7 +26,6 @@ module.exports = function(grunt) {
         sass: {
             dist: {
                 options: {
-                    sourcemap: true,
                     style: 'expanded',
                 },
                 files: {
@@ -127,6 +122,19 @@ module.exports = function(grunt) {
             }
         },
 
+        // browserSync
+        browserSync: {
+            dev: {
+                bsFiles: {
+                    src : ['style.css', 'assets/js/*.js', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
+                },
+                options: {
+                    proxy: "local.dev",
+                    watchTask: true
+                }
+            }
+        },
+
         // deploy via rsync
         deploy: {
             options: {
@@ -156,6 +164,6 @@ module.exports = function(grunt) {
     grunt.renameTask('rsync', 'deploy');
 
     // register task
-    grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify', 'imagemin', 'watch']);
+    grunt.registerTask('default', ['sass', 'autoprefixer', 'cssmin', 'uglify', 'imagemin', 'browserSync', 'watch']);
 
 };
