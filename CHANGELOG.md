@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 4.2.1
+
+* remove enqueing navigation.js and skip-link-focus.js, included in gruntfile
+* update grunt packages
+
 ## Version 4.2.0
 
 * change from using livereload to browsersync
