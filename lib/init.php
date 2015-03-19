@@ -41,7 +41,7 @@ function _mbbasetheme_setup() {
 
 	// Register nav menus
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'mbbasetheme' ),
+		'primary' => __( 'Primary Menu', '_mbbasetheme' ),
 	) );
 
 	// Register Widget Areas
