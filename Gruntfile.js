@@ -142,7 +142,8 @@ module.exports = function(grunt) {
                 },
                 options: {
                     proxy: "local.dev",
-                    watchTask: true
+                    watchTask: true,
+                    browser: "google chrome"
                 }
             }
         },
