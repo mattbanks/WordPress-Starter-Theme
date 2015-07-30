@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 4.2.2
+
+* update tgmpa to v2.5.2
+* change required plugins - remove Pods, add CFS and CFS Options Screens
+* update grunt packages
+* include spritesheet compilation (props [jjmu15](https://github.com/jjmu15))
+* make browserSync open Chrome
+
 ## Version 4.2.1
 
 * remove enqueing navigation.js and skip-link-focus.js, included in gruntfile
