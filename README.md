@@ -24,6 +24,7 @@ If you are using MAMP or Vagrant, change the `proxy` option in the `grunt browse
 - Minify and lint `assets/js/source/main.js` to `assets/js/main.min.js`
 - ??
 - Profit
+- Create sprites by adding PNGs to assets/images/sprites and use by referencing created classes in assets/styles/partials/_spritesheet.scss
 
 To concatenate and minify your jQuery plugins, add them to the `assets/js/vendor` directory and add the `js` filename and path to the `Gruntfile` `uglify` task. Previous versions of the starter theme automatically pulled all plugins in the `vendor` directory, but this has changed to allow more granular control and for managing plugins and assets with bower.
 

@@ -62,6 +62,18 @@ module.exports = function(grunt) {
             }
         },
 
+        // image sprites
+        sprite: {
+            all: {
+                src: 'assets/images/sprites/*.png',
+                dest: 'assets/images/spritesheet.png',
+                destCss: 'assets/styles/partials/_spritesheet.scss',
+                padding: 30,
+                cssFormat: 'css',
+                imgPath: 'assets/images/spritesheet.png'
+            }
+        },
+
         // javascript linting with jshint
         jshint: {
             options: {
@@ -159,6 +171,9 @@ module.exports = function(grunt) {
         }
 
     });
+
+    // Load in `grunt-spritesmith`
+    grunt.loadNpmTasks('grunt-spritesmith');
 
     // rename tasks
     grunt.renameTask('rsync', 'deploy');
