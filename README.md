@@ -1,6 +1,6 @@
 # WordPress Starter Theme
 
-Version: 4.2.1
+Version: 4.2.2
 
 ## Author:
 
@@ -63,6 +63,7 @@ Anyone and everyone is welcome to contribute! Check out the [Contributing Guidel
 ### Contributors:
 
 - [ddropik](https://github.com/ddropik)
+- [jjmu15](https://github.com/jjmu15)
 
 ### Credits
 
