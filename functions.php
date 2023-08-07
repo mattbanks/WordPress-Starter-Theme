@@ -79,3 +79,22 @@ add_filter( 'wpseo_metabox_prio', 'mb_filter_yoast_seo_metabox' );
 function mb_filter_yoast_seo_metabox() {
 	return 'low';
 }
+
+/****************** Prevent users from pasting or submitting a link or URL  *****/
+function prevent_url_search($query) {
+	if (is_search() && !empty($_GET['s'])) {
+		$search_query = trim($_GET['s']);
+		$url_pattern = '/(http|https):\/\/[^\s]+/i';
+
+		if (preg_match($url_pattern, $search_query)) {
+			$query->set('s', ''); // Clear the search query to return no results
+
+			// Display a message to the user
+			wp_die('Sorry, URLs or links are not allowed in the search.');
+		}
+	}
+}
+
+add_action('pre_get_posts', 'prevent_url_search');
+
+/****************** Prevent users from pasting or submitting a link or URL  *****/
